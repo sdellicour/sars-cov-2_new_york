@@ -1,0 +1,8 @@
+NY,NY.Bronx,NY.Brooklyn,NY.Manhattan,NY.Queens,NY.StatenIsland,other
+NY,NA,1775.3,136.8,2095.7,0.4,845.4,174.6
+NY.Bronx,11.8,NA,0.8,0.2,0.4,0.2,0.8
+NY.Brooklyn,Inf,Inf,NA,Inf,Inf,Inf,Inf
+NY.Manhattan,1,0,18.5,NA,358.7,0.4,322.8
+NY.Queens,Inf,0.2,94.7,2.1,NA,4.8,27.6
+NY.StatenIsland,0.2,0.1,0.2,3994.4,0.3,NA,0.3
+other,Inf,Inf,Inf,Inf,Inf,Inf,NA

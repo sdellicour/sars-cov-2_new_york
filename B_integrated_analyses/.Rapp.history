@@ -1,0 +1,1361 @@
+tipLabels = matrix(nrow=dim(mcc_tab)[1], ncol=1); colnames(tipLabels) = "tipLabel"#
+				for (j in 1:dim(mcc_tab)[1])#
+					{#
+						if (!mcc_tab[j,"node2"]%in%mcc_tab[,"node1"])#
+							{#
+								index = which((round(metadata[,"longitude"],5)==round(mcc_tab[j,"endLon"],8))&(round(metadata[,"latitude"],5)==round(mcc_tab[j,"endLat"],8)))#
+								if (length(index) != 1)#
+									{#
+										print(c(i,j))#
+									}	else	{#
+										tipLabels[j,1] = metadata[index,"trait"]#
+									}#
+							}	#
+					}#
+				mcc_tab = cbind(mcc_tab, tipLabels)
+tipLabels = matrix(nrow=dim(mcc_tab)[1], ncol=1); colnames(tipLabels) = "tipLabel"#
+				for (j in 1:dim(mcc_tab)[1])#
+					{#
+						if (!mcc_tab[j,"node2"]%in%mcc_tab[,"node1"])#
+							{#
+								index = which((round(metadata[,"longitude"],5)==round(mcc_tab[j,"endLon"],8))&(round(metadata[,"latitude"],5)==round(mcc_tab[j,"endLat"],8)))#
+								if (length(index) != 1)#
+									{#
+										print(c(i,j))#
+									}	else	{#
+										tipLabels[j,1] = metadata[index,"trait"]#
+									}#
+							}	#
+					}#
+				mcc_tab = cbind(mcc_tab, tipLabels)
+tipLabels = matrix(nrow=dim(mcc_tab)[1], ncol=1); colnames(tipLabels) = "tipLabel"#
+				for (j in 1:dim(mcc_tab)[1])#
+					{#
+						if (!mcc_tab[j,"node2"]%in%mcc_tab[,"node1"])#
+							{#
+								index = which((round(metadata[,"longitude"],5)==round(mcc_tab[j,"endLon"],8))&(round(metadata[,"latitude"],5)==round(mcc_tab[j,"endLat"],8)))#
+								if (length(index) != 1)#
+									{#
+										print(c(i,j))#
+									}	else	{#
+										tipLabels[j,1] = metadata[index,"trait"]#
+									}#
+							}	#
+					}#
+				mcc_tab = cbind(mcc_tab, tipLabels)
+tipLabels = matrix(nrow=dim(mcc_tab)[1], ncol=1); colnames(tipLabels) = "tipLabel"#
+				for (j in 1:dim(mcc_tab)[1])#
+					{#
+						if (!mcc_tab[j,"node2"]%in%mcc_tab[,"node1"])#
+							{#
+								index = which((round(metadata[,"longitude"],10)==round(mcc_tab[j,"endLon"],8))&(round(metadata[,"latitude"],5)==round(mcc_tab[j,"endLat"],10)))#
+								if (length(index) != 1)#
+									{#
+										print(c(i,j))#
+									}	else	{#
+										tipLabels[j,1] = metadata[index,"trait"]#
+									}#
+							}	#
+					}
+tipLabels = matrix(nrow=dim(mcc_tab)[1], ncol=1); colnames(tipLabels) = "tipLabel"#
+				for (j in 1:dim(mcc_tab)[1])#
+					{#
+						if (!mcc_tab[j,"node2"]%in%mcc_tab[,"node1"])#
+							{#
+								index = which((round(metadata[,"longitude"],10)==round(mcc_tab[j,"endLon"],8))&(round(metadata[,"latitude"],5)==round(mcc_tab[j,"endLat"],10)))#
+								if (length(index) != 1)#
+									{#
+										print(c(i,j))#
+									}	else	{#
+										tipLabels[j,1] = metadata[index,"trait"]#
+									}#
+							}	#
+					}
+tipLabels = matrix(nrow=dim(mcc_tab)[1], ncol=1); colnames(tipLabels) = "tipLabel"#
+				for (j in 1:dim(mcc_tab)[1])#
+					{#
+						if (!mcc_tab[j,"node2"]%in%mcc_tab[,"node1"])#
+							{#
+								index = which((round(metadata[,"longitude"],10)==round(mcc_tab[j,"endLon"],8))&(round(metadata[,"latitude"],5)==round(mcc_tab[j,"endLat"],10)))#
+								if (length(index) != 1)#
+									{#
+										print(c(i,j))#
+									}	else	{#
+										tipLabels[j,1] = metadata[index,"trait"]#
+									}#
+							}	#
+					}#
+				mcc_tab = cbind(mcc_tab, tipLabels)
+tipLabels = matrix(nrow=dim(mcc_tab)[1], ncol=1); colnames(tipLabels) = "tipLabel"#
+				for (j in 1:dim(mcc_tab)[1])#
+					{#
+						if (!mcc_tab[j,"node2"]%in%mcc_tab[,"node1"])#
+							{#
+								index = which((round(metadata[,"longitude"],10)==round(mcc_tab[j,"endLon"],10))&(round(metadata[,"latitude"],10)==round(mcc_tab[j,"endLat"],10)))#
+								if (length(index) != 1)#
+									{#
+										print(c(i,j))#
+									}	else	{#
+										tipLabels[j,1] = metadata[index,"trait"]#
+									}#
+							}	#
+					}#
+				mcc_tab = cbind(mcc_tab, tipLabels)
+tipLabels = matrix(nrow=dim(mcc_tab)[1], ncol=1); colnames(tipLabels) = "tipLabel"#
+				for (j in 1:dim(mcc_tab)[1])#
+					{#
+						if (!mcc_tab[j,"node2"]%in%mcc_tab[,"node1"])#
+							{#
+								index = which((round(metadata[,"longitude"],10)==round(mcc_tab[j,"endLon"],10))&(round(metadata[,"latitude"],10)==round(mcc_tab[j,"endLat"],10)))#
+								if (length(index) != 1)#
+									{#
+										print(c(i,j))#
+									}	else	{#
+										tipLabels[j,1] = metadata[index,"trait"]#
+									}#
+							}	#
+					}#
+				mcc_tab = cbind(mcc_tab, tipLabels)
+tipLabels = matrix(nrow=dim(mcc_tab)[1], ncol=1); colnames(tipLabels) = "tipLabel"#
+				for (j in 1:dim(mcc_tab)[1])#
+					{#
+						if (!mcc_tab[j,"node2"]%in%mcc_tab[,"node1"])#
+							{#
+								index = which((round(metadata[,"longitude"],10)==round(mcc_tab[j,"endLon"],10))&(round(metadata[,"latitude"],10)==round(mcc_tab[j,"endLat"],10)))#
+								if (length(index) != 1)#
+									{#
+										print(c(i,j))#
+									}	else	{#
+										tipLabels[j,1] = metadata[index,"trait"]#
+									}#
+							}	#
+					}#
+				mcc_tab = cbind(mcc_tab, tipLabels)
+metadata[,"longitude"]
+metadata[,"longitude"]
+metadata[,"longitude"]
+metadata[1,"longitude"]
+tipLabels = matrix(nrow=dim(mcc_tab)[1], ncol=1); colnames(tipLabels) = "tipLabel"#
+				for (j in 1:dim(mcc_tab)[1])#
+					{#
+						if (!mcc_tab[j,"node2"]%in%mcc_tab[,"node1"])#
+							{#
+								index = which((round(metadata[,"longitude"],5)==round(mcc_tab[j,"endLon"],5))&(round(metadata[,"latitude"],5)==round(mcc_tab[j,"endLat"],5)))#
+								if (length(index) != 1)#
+									{#
+										print(c(i,j))#
+									}	else	{#
+										tipLabels[j,1] = metadata[index,"trait"]#
+									}#
+							}	#
+					}#
+				mcc_tab = cbind(mcc_tab, tipLabels)
+mcc_tab = read.csv(paste0("Replicate_",n,"_MCC.csv"), head=T)#
+		if (!"tipLabel"%in%colnames(mcc_tab))#
+			{#
+				tipLabels = matrix(nrow=dim(mcc_tab)[1], ncol=1); colnames(tipLabels) = "tipLabel"#
+				for (j in 1:dim(mcc_tab)[1])#
+					{#
+						if (!mcc_tab[j,"node2"]%in%mcc_tab[,"node1"])#
+							{#
+								index = which((round(metadata[,"longitude"],5)==round(mcc_tab[j,"endLon"],5))&(round(metadata[,"latitude"],5)==round(mcc_tab[j,"endLat"],5)))#
+								if (length(index) != 1)#
+									{#
+										print(c(i,j))#
+									}	else	{#
+										tipLabels[j,1] = metadata[index,"trait"]#
+									}#
+							}	#
+					}#
+				mcc_tab = cbind(mcc_tab, tipLabels)#
+				write.csv(mcc_tab, paste0(analyses[i],".csv"), row.names=F, quote=F)#
+			}
+mcc_tab = read.csv(paste0("Replicate_",n,"_MCC.csv"), head=T)#
+		if (!"tipLabel"%in%colnames(mcc_tab))#
+			{#
+				tipLabels = matrix(nrow=dim(mcc_tab)[1], ncol=1); colnames(tipLabels) = "tipLabel"#
+				for (j in 1:dim(mcc_tab)[1])#
+					{#
+						if (!mcc_tab[j,"node2"]%in%mcc_tab[,"node1"])#
+							{#
+								index = which((round(metadata[,"longitude"],5)==round(mcc_tab[j,"endLon"],5))&(round(metadata[,"latitude"],5)==round(mcc_tab[j,"endLat"],5)))#
+								if (length(index) != 1)#
+									{#
+										print(c(i,j))#
+									}	else	{#
+										tipLabels[j,1] = metadata[index,"trait"]#
+									}#
+							}	#
+					}#
+				mcc_tab = cbind(mcc_tab, tipLabels)#
+				write.csv(mcc_tab, paste0("Replicate_",n,"_MCC.csv"), row.names=F, quote=F)#
+			}
+for (n in 1:nberOfReplicates)#
+	{#
+		mcc_tab = read.csv(paste0("Replicate_",n,"_MCC.csv"), head=T)#
+		if (!"tipLabel"%in%colnames(mcc_tab))#
+			{#
+				tipLabels = matrix(nrow=dim(mcc_tab)[1], ncol=1); colnames(tipLabels) = "tipLabel"#
+				for (j in 1:dim(mcc_tab)[1])#
+					{#
+						if (!mcc_tab[j,"node2"]%in%mcc_tab[,"node1"])#
+							{#
+								index = which((round(metadata[,"longitude"],5)==round(mcc_tab[j,"endLon"],5))&(round(metadata[,"latitude"],5)==round(mcc_tab[j,"endLat"],5)))#
+								if (length(index) != 1)#
+									{#
+										print(c(i,j))#
+									}	else	{#
+										tipLabels[j,1] = metadata[index,"trait"]#
+									}#
+							}	#
+					}#
+				mcc_tab = cbind(mcc_tab, tipLabels)#
+				write.csv(mcc_tab, paste0("Replicate_",n,"_MCC.csv"), row.names=F, quote=F)#
+			}#
+	}
+tab = read.csv(paste0("Replicate_",n,"_RRW_ext/TreeExtractions_",j,".csv"), head=T)
+n=1
+j=1
+tab = read.csv(paste0("Replicate_",n,"_RRW_ext/TreeExtractions_",j,".csv"), head=T)#
+				if (!"tipLabel"%in%colnames(tab))#
+					{#
+						tipLabels = matrix(nrow=dim(tab)[1], ncol=1); colnames(tipLabels) = "tipLabel"#
+						for (k in 1:dim(tab)[1])#
+							{#
+								if (!tab[k,"node2"]%in%tab[,"node1"])#
+									{#
+										index = which((round(metadata[,"longitude"],5)==round(tab[k,"endLon"],5))&(round(metadata[,"latitude"],5)==round(tab[k,"endLat"],5)))#
+										if (length(index) != 1)#
+											{#
+												print(c(i,j,k))#
+											}	else	{#
+												tipLabels[k,1] = metadata[index,"trait"]#
+											}#
+									}	#
+							}#
+						tab = cbind(tab, tipLabels)#
+						write.csv(tab, paste0("Replicate_",n,"_RRW_ext/TreeExtractions_",j,".csv"), row.names=F, quote=F)#
+					}
+for (n in 1:nberOfReplicates)#
+	{#
+		for (j in 1:nberOfTreesToSample)#
+			{#
+				tab = read.csv(paste0("Replicate_",n,"_RRW_ext/TreeExtractions_",j,".csv"), head=T)#
+				if (!"tipLabel"%in%colnames(tab))#
+					{#
+						tipLabels = matrix(nrow=dim(tab)[1], ncol=1); colnames(tipLabels) = "tipLabel"#
+						for (k in 1:dim(tab)[1])#
+							{#
+								if (!tab[k,"node2"]%in%tab[,"node1"])#
+									{#
+										index = which((round(metadata[,"longitude"],5)==round(tab[k,"endLon"],5))&(round(metadata[,"latitude"],5)==round(tab[k,"endLat"],5)))#
+										if (length(index) != 1)#
+											{#
+												print(c(i,j,k))#
+											}	else	{#
+												tipLabels[k,1] = metadata[index,"trait"]#
+											}#
+									}	#
+							}#
+						tab = cbind(tab, tipLabels)#
+						write.csv(tab, paste0("Replicate_",n,"_RRW_ext/TreeExtractions_",j,".csv"), row.names=F, quote=F)#
+					}#
+			}#
+	}
+getwd()
+setwd(wd)
+nberOfReplicates = 10; wd = getwd()#
+setwd(paste0(wd,"/B_integrated_analyses/Replicate_DTA_analyses/"))#
+locations = c("NY","NY-Bronx","NY-Brooklyn","NY-Manhattan","NY-Queens","NY-StatenIsland","other")
+n
+n=1
+!file.exists(paste0("Replicate_",n,"_DTA.txt"))
+log = scan(paste0("Replicate_",n,"_DTA_3.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)
+head(log)
+?sample
+floor((length(log)-4)/1000)
+log = scan(paste0("Replicate_",n,"_DTA_3.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)
+log = log[c(1:4,(burnIns_DTA[n]+1):length(log))]
+log = scan(paste0("Replicate_",n,"_DTA_3.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)
+floor((length(log)-4)/1000)
+seq(5,5+(999*interval),interval)
+interval = floor((length(log)-4)/1000)
+seq(5,5+(999*interval),interval)
+getwd()
+locations = c("NY","NY-Bronx","NY-Brooklyn","NY-Manhattan","NY-Queens","NY-StatenIsland","other")#
+burnIns_DTA = c(1001,301,1041,301,301,241,301,1001,201,4401)#
+burnIns_wTS = c(2001,1501,1801,1301,261,1701,201,1301,801,2201)#
+for (n in 1:nberOfReplicates)#
+	{#
+		if (!file.exists(paste0("Replicate_",n,"_DTA_4.log")))#
+			{#
+				log = scan(paste0("Replicate_",n,"_DTA_3.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:4,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-4)/1000)#
+				log = log[c(1:4,seq(5,5+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_DTA_4.log"))#
+			}#
+		if (!file.exists(paste0("Replicate_",n,"_wTS_4.log")))#
+			{#
+				log = scan(paste0("Replicate_",n,"_wTS_3.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:4,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-4)/1000)#
+				log = log[c(1:4,seq(5,5+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_wTS_4.log"))#
+			}#
+	}
+n=1
+if (!file.exists(paste0("Replicate_",n,"_DTA_4.txt")))#
+			{#
+				system(paste0("perl Getting_Markov_jumps.pl 0 < Replicate_",n,"_DTA.log > Replicate_",n,"_DTA_4.txt"))#
+			}
+system(paste0("perl Getting_Markov_jumps.pl 0 < Replicate_",n,"_DTA_4.log > Replicate_",n,"_DTA_4.txt"))
+tab = read.table(paste0("Replicate_",n,"_DTA_4.txt"), head=T)#
+				MJs = matrix(nrow=length(locations), ncol=length(locations))#
+				states = unique(tab[,"state"])#
+				for (i in 1:length(locations))#
+					{#
+						for (j in 1:length(locations))#
+							{#
+								sub = tab[which((tab[,"from"]==locations[i])&(tab[,"to"]==locations[j])),]#
+								MJs_post = c(); # print(c(i,j))#
+								for (k in 1:length(states))#
+									{#
+										MJ = which(sub[,"state"]==states[k])#
+										MJs_post = c(MJs_post, length(MJ))#
+									}#
+								MJs[i,j] = mean(MJs_post) # median ??#
+							}#
+					}#
+				row.names(MJs) = locations; colnames(MJs) = locations#
+				write.table(round(MJs,1), paste0("Replicate_",n,"_DTA_4.csv"), quote=F, sep=",")
+tab = read.table(paste0("Replicate_",n,"_DTA_4.txt"), head=T)#
+				MJs = matrix(nrow=length(locations), ncol=length(locations))#
+				states = unique(tab[,"state"])#
+				for (i in 1:length(locations))#
+					{#
+						for (j in 1:length(locations))#
+							{#
+								sub = tab[which((tab[,"from"]==locations[i])&(tab[,"to"]==locations[j])),]#
+								MJs_post = c(); # print(c(i,j))#
+								for (k in 1:length(states))#
+									{#
+										MJ = which(sub[,"location"]==states[k])#
+										MJs_post = c(MJs_post, length(MJ))#
+									}#
+								MJs[i,j] = mean(MJs_post) # median ??#
+							}#
+					}#
+				row.names(MJs) = locations; colnames(MJs) = locations#
+				write.table(round(MJs,1), paste0("Replicate_",n,"_DTA_4.csv"), quote=F, sep=",")
+tab = read.table(paste0("Replicate_",n,"_DTA_4.txt"), head=T)#
+				MJs = matrix(nrow=length(locations), ncol=length(locations))#
+				states = unique(tab[,"location"])#
+				for (i in 1:length(locations))#
+					{#
+						for (j in 1:length(locations))#
+							{#
+								sub = tab[which((tab[,"from"]==locations[i])&(tab[,"to"]==locations[j])),]#
+								MJs_post = c(); # print(c(i,j))#
+								for (k in 1:length(states))#
+									{#
+										MJ = which(sub[,"location"]==states[k])#
+										MJs_post = c(MJs_post, length(MJ))#
+									}#
+								MJs[i,j] = mean(MJs_post) # median ??#
+							}#
+					}#
+				row.names(MJs) = locations; colnames(MJs) = locations#
+				write.table(round(MJs,1), paste0("Replicate_",n,"_DTA_4.csv"), quote=F, sep=",")
+tab = read.table(paste0("Replicate_",n,"_DTA_4.txt"), head=T)
+txt = scan(paste0("Replicate_",n,"_DTA_4.txt"), what="", sep="\n", quiet=T, blank.lines.skip=F)
+system(paste0("perl Getting_Markov_jumps.pl 0 < Replicate_",n,"_DTA_4.log > Replicate_",n,"_DTA_4.txt"))#
+				txt = scan(paste0("Replicate_",n,"_DTA_4.txt"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				write(txt[c(1,3:length(txt))], paste0("Replicate_",n,"_DTA_4.txt"))
+tab = read.table(paste0("Replicate_",n,"_DTA_4.txt"), head=T)
+MJs = matrix(nrow=length(locations), ncol=length(locations))
+states = unique(tab[,"location"])
+head(tab)
+tab = read.table(paste0("Replicate_",n,"_DTA_4.txt"), head=T)#
+				MJs = matrix(nrow=length(locations), ncol=length(locations))#
+				states = unique(tab[,"state"])#
+				for (i in 1:length(locations))#
+					{#
+						for (j in 1:length(locations))#
+							{#
+								sub = tab[which((tab[,"from"]==locations[i])&(tab[,"to"]==locations[j])),]#
+								MJs_post = c(); # print(c(i,j))#
+								for (k in 1:length(states))#
+									{#
+										MJ = which(sub[,"state"]==states[k])#
+										MJs_post = c(MJs_post, length(MJ))#
+									}#
+								MJs[i,j] = mean(MJs_post) # median ??#
+							}#
+					}#
+				row.names(MJs) = locations; colnames(MJs) = locations#
+				write.table(round(MJs,1), paste0("Replicate_",n,"_DTA_4.csv"), quote=F, sep=",")
+locations = c("Bronx","Brooklyn","Manhattan","Queens","StatenIsland")
+tab = read.table(paste0("Replicate_",n,"_DTA_4.txt"), head=T)#
+				MJs = matrix(nrow=length(locations), ncol=length(locations))#
+				states = unique(tab[,"state"])#
+				for (i in 1:length(locations))#
+					{#
+						for (j in 1:length(locations))#
+							{#
+								sub = tab[which((tab[,"from"]==locations[i])&(tab[,"to"]==locations[j])),]#
+								MJs_post = c(); # print(c(i,j))#
+								for (k in 1:length(states))#
+									{#
+										MJ = which(sub[,"state"]==states[k])#
+										MJs_post = c(MJs_post, length(MJ))#
+									}#
+								MJs[i,j] = mean(MJs_post) # median ??#
+							}#
+					}#
+				row.names(MJs) = locations; colnames(MJs) = locations#
+				write.table(round(MJs,1), paste0("Replicate_",n,"_DTA_4.csv"), quote=F, sep=",")
+MJs = read.csv(paste0("Replicate_",n,"_DTA_4.csv"), header=T)
+log1 = read.table(paste0("Replicate_",n,"_DTA_1.log"), header=T)#
+		log2 = read.table(paste0("Replicate_",n,"_wTS_1.log"), header=T)#
+		log1 = log1[(round(dim(log1)[1]/10)+1):dim(log1)[1],]#
+		log2 = log2[(round(dim(log2)[1]/10)+1):dim(log2)[1],]#
+		rates = matrix(nrow=length(locations), ncol=length(locations))#
+		BFs1 = matrix(nrow=length(locations), ncol=length(locations))#
+		BFs2 = matrix(nrow=length(locations), ncol=length(locations))#
+		row.names(rates) = locations; colnames(rates) = locations#
+		row.names(BFs1) = locations; colnames(BFs1) = locations#
+		row.names(BFs2) = locations; colnames(BFs2) = locations#
+		for (i in 1:length(locations))#
+			{#
+				for (j in 1:length(locations))#
+					{#
+						if (i != j)#
+							{#
+								colName = paste0("location.indicators.",locations[i],".",locations[j])#
+								index1 = which(colnames(log1)==colName); index2 = which(colnames(log2)==colName)#
+								p = sum(log1[,index1]==1)/dim(log1)[1]#
+								K = 42 # length(locations)*(length(locations)-1) # K shoulf be divided by 2 if "symetric" case#
+								q = (log(2)+K-1)/(K*(K-1))#
+								BFs1[i,j] = (p/(1-p))/(q/(1-q))#
+								p1 = sum(log1[,index1]==1)/dim(log1)[1]#
+								p2 = sum(log2[,index2]==1)/dim(log2)[1]#
+								BFs2[i,j] = (p1/(1-p1))/(p2/(1-p2))#
+								index3 = which(colnames(log1)==paste0("location.rates.",locations[i],".",locations[j]))#
+								rates[i,j] = median(log1[,index3]*log1[,index1])#
+							}#
+					}#
+			}#
+		MJs1 = MJs; MJs2 = MJs; rates[BFs2<3] = NA; MJs1[BFs1<3] = NA; MJs2[BFs2<3] = NA; BFs1 = round(BFs1, 1); BFs2 = round(BFs2, 1)
+length(locations)*(length(locations)-1)
+log = scan(paste0("Replicate_",n,"_DTA_1.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:4,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-4)/1000)#
+				log = log[c(1:4,seq(5,5+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_DTA_4.log"))
+if (!file.exists(paste0("Replicate_",n,"_DTA_4.log")))#
+			{#
+				log = scan(paste0("Replicate_",n,"_DTA_1.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:4,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-4)/1000)#
+				log = log[c(1:4,seq(5,5+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_DTA_4.log"))#
+			}#
+		if (!file.exists(paste0("Replicate_",n,"_wTS_4.log")))#
+			{#
+				log = scan(paste0("Replicate_",n,"_wTS_1.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:4,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-4)/1000)#
+				log = log[c(1:4,seq(5,5+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_wTS_4.log"))#
+			}#
+		if (!file.exists(paste0("Replicate_",n,"_DTA_5.log")))#
+			{#
+				log = scan(paste0("Replicate_",n,"_DTA_3.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:4,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-4)/1000)#
+				log = log[c(1:4,seq(5,5+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_DTA_5.log"))#
+			}#
+		if (!file.exists(paste0("Replicate_",n,"_wTS_5.log")))#
+			{#
+				log = scan(paste0("Replicate_",n,"_wTS_3.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:4,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-4)/1000)#
+				log = log[c(1:4,seq(5,5+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_wTS_5.log"))#
+			}
+if (!file.exists(paste0("Replicate_",n,"_DTA_5.txt")))#
+			{#
+				system(paste0("perl Getting_Markov_jumps.pl 0 < Replicate_",n,"_DTA_5.log > Replicate_",n,"_DTA_5.txt"))#
+				txt = scan(paste0("Replicate_",n,"_DTA_5.txt"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				write(txt[c(1,3:length(txt))], paste0("Replicate_",n,"_DTA_4.txt"))#
+			}
+tab = read.table(paste0("Replicate_",n,"_DTA_5.txt"), head=T)#
+				MJs = matrix(nrow=length(locations), ncol=length(locations))#
+				states = unique(tab[,"state"])#
+				for (i in 1:length(locations))#
+					{#
+						for (j in 1:length(locations))#
+							{#
+								sub = tab[which((tab[,"from"]==locations[i])&(tab[,"to"]==locations[j])),]#
+								MJs_post = c(); # print(c(i,j))#
+								for (k in 1:length(states))#
+									{#
+										MJ = which(sub[,"state"]==states[k])#
+										MJs_post = c(MJs_post, length(MJ))#
+									}#
+								MJs[i,j] = mean(MJs_post) # median ??#
+							}#
+					}#
+				row.names(MJs) = locations; colnames(MJs) = locations#
+				write.table(round(MJs,1), paste0("Replicate_",n,"_DTA_5.csv"), quote=F, sep=",")
+MJs = read.csv(paste0("Replicate_",n,"_DTA_5.csv"), header=T)
+log1 = read.table(paste0("Replicate_",n,"_DTA_4.log"), header=T)#
+		log2 = read.table(paste0("Replicate_",n,"_wTS_4.log"), header=T)#
+		rates = matrix(nrow=length(locations), ncol=length(locations))#
+		BFs1 = matrix(nrow=length(locations), ncol=length(locations))#
+		BFs2 = matrix(nrow=length(locations), ncol=length(locations))#
+		row.names(rates) = locations; colnames(rates) = locations#
+		row.names(BFs1) = locations; colnames(BFs1) = locations#
+		row.names(BFs2) = locations; colnames(BFs2) = locations
+for (i in 1:length(locations))#
+			{#
+				for (j in 1:length(locations))#
+					{#
+						if (i != j)#
+							{#
+								colName = paste0("location.indicators.",locations[i],".",locations[j])#
+								index1 = which(colnames(log1)==colName); index2 = which(colnames(log2)==colName)#
+								p = sum(log1[,index1]==1)/dim(log1)[1]#
+								K = 20 # length(locations)*(length(locations)-1) # K shoulf be divided by 2 if "symetric" case#
+								q = (log(2)+K-1)/(K*(K-1))#
+								BFs1[i,j] = (p/(1-p))/(q/(1-q))#
+								p1 = sum(log1[,index1]==1)/dim(log1)[1]#
+								p2 = sum(log2[,index2]==1)/dim(log2)[1]#
+								BFs2[i,j] = (p1/(1-p1))/(p2/(1-p2))#
+								index3 = which(colnames(log1)==paste0("location.rates.",locations[i],".",locations[j]))#
+								rates[i,j] = median(log1[,index3]*log1[,index1])#
+							}#
+					}#
+			}#
+		MJs1 = MJs; MJs2 = MJs; rates[BFs2<3] = NA; MJs1[BFs1<3] = NA; MJs2[BFs2<3] = NA; BFs1 = round(BFs1, 1); BFs2 = round(BFs2, 1)
+i
+j
+colName = paste0("location.indicators.",locations[i],".",locations[j])
+index1 = which(colnames(log1)==colName); index2 = which(colnames(log2)==colName)
+index1
+colnames(log1)
+log = scan(paste0("Replicate_",n,"_DTA_1.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:5,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-5)/1000)#
+				log = log[c(1:5,seq(6,6+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_DTA_4.log"))
+log = scan(paste0("Replicate_",n,"_wTS_1.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:5,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-5)/1000)#
+				log = log[c(1:5,seq(6,6+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_wTS_4.log"))
+log1 = read.table(paste0("Replicate_",n,"_DTA_4.log"), header=T)#
+		log2 = read.table(paste0("Replicate_",n,"_wTS_4.log"), header=T)#
+		rates = matrix(nrow=length(locations), ncol=length(locations))#
+		BFs1 = matrix(nrow=length(locations), ncol=length(locations))#
+		BFs2 = matrix(nrow=length(locations), ncol=length(locations))#
+		row.names(rates) = locations; colnames(rates) = locations#
+		row.names(BFs1) = locations; colnames(BFs1) = locations#
+		row.names(BFs2) = locations; colnames(BFs2) = locations#
+		for (i in 1:length(locations))#
+			{#
+				for (j in 1:length(locations))#
+					{#
+						if (i != j)#
+							{#
+								colName = paste0("location.indicators.",locations[i],".",locations[j])#
+								index1 = which(colnames(log1)==colName); index2 = which(colnames(log2)==colName)#
+								p = sum(log1[,index1]==1)/dim(log1)[1]#
+								K = 20 # length(locations)*(length(locations)-1) # K shoulf be divided by 2 if "symetric" case#
+								q = (log(2)+K-1)/(K*(K-1))#
+								BFs1[i,j] = (p/(1-p))/(q/(1-q))#
+								p1 = sum(log1[,index1]==1)/dim(log1)[1]#
+								p2 = sum(log2[,index2]==1)/dim(log2)[1]#
+								BFs2[i,j] = (p1/(1-p1))/(p2/(1-p2))#
+								index3 = which(colnames(log1)==paste0("location.rates.",locations[i],".",locations[j]))#
+								rates[i,j] = median(log1[,index3]*log1[,index1])#
+							}#
+					}#
+			}#
+		MJs1 = MJs; MJs2 = MJs; rates[BFs2<3] = NA; MJs1[BFs1<3] = NA; MJs2[BFs2<3] = NA; BFs1 = round(BFs1, 1); BFs2 = round(BFs2, 1)
+MJs1
+MJs2
+locations = c("Bronx","Brooklyn","Manhattan","Queens","StatenIsland")#
+burnIns_DTA = c(1001,301,1041,301,301,241,301,1001,201,4401)#
+burnIns_wTS = c(2001,1501,1801,1301,261,1701,201,1301,801,2201)#
+for (n in 1:nberOfReplicates)#
+	{#
+		if (!file.exists(paste0("Replicate_",n,"_DTA_4.log")))#
+			{#
+				log = scan(paste0("Replicate_",n,"_DTA_1.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:5,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-5)/1000)#
+				log = log[c(1:5,seq(6,6+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_DTA_4.log"))#
+			}#
+		if (!file.exists(paste0("Replicate_",n,"_wTS_4.log")))#
+			{#
+				log = scan(paste0("Replicate_",n,"_wTS_1.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:5,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-5)/1000)#
+				log = log[c(1:5,seq(6,6+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_wTS_4.log"))#
+			}#
+		if (!file.exists(paste0("Replicate_",n,"_DTA_5.log")))#
+			{#
+				log = scan(paste0("Replicate_",n,"_DTA_3.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:4,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-4)/1000)#
+				log = log[c(1:4,seq(5,5+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_DTA_5.log"))#
+			}#
+		if (!file.exists(paste0("Replicate_",n,"_wTS_5.log")))#
+			{#
+				log = scan(paste0("Replicate_",n,"_wTS_3.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:4,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-4)/1000)#
+				log = log[c(1:4,seq(5,5+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_wTS_5.log"))#
+			}#
+	}#
+for (n in 1:nberOfReplicates)#
+	{#
+		if (!file.exists(paste0("Replicate_",n,"_DTA_5.txt")))#
+			{#
+				system(paste0("perl Getting_Markov_jumps.pl 0 < Replicate_",n,"_DTA_5.log > Replicate_",n,"_DTA_5.txt"))#
+				txt = scan(paste0("Replicate_",n,"_DTA_5.txt"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				write(txt[c(1,3:length(txt))], paste0("Replicate_",n,"_DTA_4.txt"))#
+			}#
+		if (!file.exists(paste0("Replicate_",n,"_DTA_5.csv")))#
+			{#
+				tab = read.table(paste0("Replicate_",n,"_DTA_5.txt"), head=T)#
+				MJs = matrix(nrow=length(locations), ncol=length(locations))#
+				states = unique(tab[,"state"])#
+				for (i in 1:length(locations))#
+					{#
+						for (j in 1:length(locations))#
+							{#
+								sub = tab[which((tab[,"from"]==locations[i])&(tab[,"to"]==locations[j])),]#
+								MJs_post = c(); # print(c(i,j))#
+								for (k in 1:length(states))#
+									{#
+										MJ = which(sub[,"state"]==states[k])#
+										MJs_post = c(MJs_post, length(MJ))#
+									}#
+								MJs[i,j] = mean(MJs_post) # median ??#
+							}#
+					}#
+				row.names(MJs) = locations; colnames(MJs) = locations#
+				write.table(round(MJs,1), paste0("Replicate_",n,"_DTA_5.csv"), quote=F, sep=",")#
+			}	else		{#
+				MJs = read.csv(paste0("Replicate_",n,"_DTA_5.csv"), header=T)#
+			}#
+		log1 = read.table(paste0("Replicate_",n,"_DTA_4.log"), header=T)#
+		log2 = read.table(paste0("Replicate_",n,"_wTS_4.log"), header=T)#
+		rates = matrix(nrow=length(locations), ncol=length(locations))#
+		BFs1 = matrix(nrow=length(locations), ncol=length(locations))#
+		BFs2 = matrix(nrow=length(locations), ncol=length(locations))#
+		row.names(rates) = locations; colnames(rates) = locations#
+		row.names(BFs1) = locations; colnames(BFs1) = locations#
+		row.names(BFs2) = locations; colnames(BFs2) = locations#
+		for (i in 1:length(locations))#
+			{#
+				for (j in 1:length(locations))#
+					{#
+						if (i != j)#
+							{#
+								colName = paste0("location.indicators.",locations[i],".",locations[j])#
+								index1 = which(colnames(log1)==colName); index2 = which(colnames(log2)==colName)#
+								p = sum(log1[,index1]==1)/dim(log1)[1]#
+								K = 20 # length(locations)*(length(locations)-1) # K shoulf be divided by 2 if "symetric" case#
+								q = (log(2)+K-1)/(K*(K-1))#
+								BFs1[i,j] = (p/(1-p))/(q/(1-q))#
+								p1 = sum(log1[,index1]==1)/dim(log1)[1]#
+								p2 = sum(log2[,index2]==1)/dim(log2)[1]#
+								BFs2[i,j] = (p1/(1-p1))/(p2/(1-p2))#
+								index3 = which(colnames(log1)==paste0("location.rates.",locations[i],".",locations[j]))#
+								rates[i,j] = median(log1[,index3]*log1[,index1])#
+							}#
+					}#
+			}#
+		MJs1 = MJs; MJs2 = MJs; rates[BFs2<3] = NA; MJs1[BFs1<3] = NA; MJs2[BFs2<3] = NA; BFs1 = round(BFs1, 1); BFs2 = round(BFs2, 1)#
+		if (writingFiles)#
+			{#
+				write.table(BFs1, paste0("Replicate_",n,"_BFs_1.csv"), sep=",", quote=F)#
+				write.table(BFs2, paste0("Replicate_",n,"_BFs_2.csv"), sep=",", quote=F)#
+				write.table(rates, paste0("Replicate_",n,"_rates.csv"), sep=",", quote=F)#
+				write.table(MJs2, paste0("Replicate_",n,"_MJs_2.csv"), sep=",", quote=F)#
+			}#
+	}
+n
+system(paste0("perl Getting_Markov_jumps.pl 0 < Replicate_",n,"_DTA_5.log > Replicate_",n,"_DTA_5.txt"))
+txt = scan(paste0("Replicate_",n,"_DTA_5.txt"), what="", sep="\n", quiet=T, blank.lines.skip=F)
+write(txt[c(1,3:length(txt))], paste0("Replicate_",n,"_DTA_4.txt"))
+tab = read.table(paste0("Replicate_",n,"_DTA_5.txt"), head=T)
+n=1
+system(paste0("perl Getting_Markov_jumps.pl 0 < Replicate_",n,"_DTA_5.log > Replicate_",n,"_DTA_5.txt"))#
+				txt = scan(paste0("Replicate_",n,"_DTA_5.txt"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				write(txt[c(1,3:length(txt))], paste0("Replicate_",n,"_DTA_5.txt"))
+tab = read.table(paste0("Replicate_",n,"_DTA_5.txt"), head=T)#
+				MJs = matrix(nrow=length(locations), ncol=length(locations))#
+				states = unique(tab[,"state"])#
+				for (i in 1:length(locations))#
+					{#
+						for (j in 1:length(locations))#
+							{#
+								sub = tab[which((tab[,"from"]==locations[i])&(tab[,"to"]==locations[j])),]#
+								MJs_post = c(); # print(c(i,j))#
+								for (k in 1:length(states))#
+									{#
+										MJ = which(sub[,"state"]==states[k])#
+										MJs_post = c(MJs_post, length(MJ))#
+									}#
+								MJs[i,j] = mean(MJs_post) # median ??#
+							}#
+					}#
+				row.names(MJs) = locations; colnames(MJs) = locations#
+				write.table(round(MJs,1), paste0("Replicate_",n,"_DTA_5.csv"), quote=F, sep=",")
+MJs = read.csv(paste0("Replicate_",n,"_DTA_5.csv"), header=T)
+log1 = read.table(paste0("Replicate_",n,"_DTA_4.log"), header=T)#
+		log2 = read.table(paste0("Replicate_",n,"_wTS_4.log"), header=T)#
+		rates = matrix(nrow=length(locations), ncol=length(locations))#
+		BFs1 = matrix(nrow=length(locations), ncol=length(locations))#
+		BFs2 = matrix(nrow=length(locations), ncol=length(locations))#
+		row.names(rates) = locations; colnames(rates) = locations#
+		row.names(BFs1) = locations; colnames(BFs1) = locations#
+		row.names(BFs2) = locations; colnames(BFs2) = locations#
+		for (i in 1:length(locations))#
+			{#
+				for (j in 1:length(locations))#
+					{#
+						if (i != j)#
+							{#
+								colName = paste0("location.indicators.",locations[i],".",locations[j])#
+								index1 = which(colnames(log1)==colName); index2 = which(colnames(log2)==colName)#
+								p = sum(log1[,index1]==1)/dim(log1)[1]#
+								K = 20 # length(locations)*(length(locations)-1) # K shoulf be divided by 2 if "symetric" case#
+								q = (log(2)+K-1)/(K*(K-1))#
+								BFs1[i,j] = (p/(1-p))/(q/(1-q))#
+								p1 = sum(log1[,index1]==1)/dim(log1)[1]#
+								p2 = sum(log2[,index2]==1)/dim(log2)[1]#
+								BFs2[i,j] = (p1/(1-p1))/(p2/(1-p2))#
+								index3 = which(colnames(log1)==paste0("location.rates.",locations[i],".",locations[j]))#
+								rates[i,j] = median(log1[,index3]*log1[,index1])#
+							}#
+					}#
+			}#
+		MJs1 = MJs; MJs2 = MJs; rates[BFs2<3] = NA; MJs1[BFs1<3] = NA; MJs2[BFs2<3] = NA; BFs1 = round(BFs1, 1); BFs2 = round(BFs2, 1)#
+		write.table(BFs1, paste0("Replicate_",n,"_BFs_1.csv"), sep=",", quote=F)#
+		write.table(BFs2, paste0("Replicate_",n,"_BFs_2.csv"), sep=",", quote=F)#
+		write.table(rates, paste0("Replicate_",n,"_rates.csv"), sep=",", quote=F)#
+		write.table(MJs2, paste0("Replicate_",n,"_MJs_2.csv"), sep=",", quote=F)
+for (n in 1:nberOfReplicates)#
+	{#
+		if (!file.exists(paste0("Replicate_",n,"_DTA_5.txt")))#
+			{#
+				system(paste0("perl Getting_Markov_jumps.pl 0 < Replicate_",n,"_DTA_5.log > Replicate_",n,"_DTA_5.txt"))#
+				txt = scan(paste0("Replicate_",n,"_DTA_5.txt"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				write(txt[c(1,3:length(txt))], paste0("Replicate_",n,"_DTA_5.txt"))#
+			}#
+		if (!file.exists(paste0("Replicate_",n,"_DTA_5.csv")))#
+			{#
+				tab = read.table(paste0("Replicate_",n,"_DTA_5.txt"), head=T)#
+				MJs = matrix(nrow=length(locations), ncol=length(locations))#
+				states = unique(tab[,"state"])#
+				for (i in 1:length(locations))#
+					{#
+						for (j in 1:length(locations))#
+							{#
+								sub = tab[which((tab[,"from"]==locations[i])&(tab[,"to"]==locations[j])),]#
+								MJs_post = c(); # print(c(i,j))#
+								for (k in 1:length(states))#
+									{#
+										MJ = which(sub[,"state"]==states[k])#
+										MJs_post = c(MJs_post, length(MJ))#
+									}#
+								MJs[i,j] = mean(MJs_post) # median ??#
+							}#
+					}#
+				row.names(MJs) = locations; colnames(MJs) = locations#
+				write.table(round(MJs,1), paste0("Replicate_",n,"_DTA_5.csv"), quote=F, sep=",")#
+			}	else		{#
+				MJs = read.csv(paste0("Replicate_",n,"_DTA_5.csv"), header=T)#
+			}#
+		log1 = read.table(paste0("Replicate_",n,"_DTA_4.log"), header=T)#
+		log2 = read.table(paste0("Replicate_",n,"_wTS_4.log"), header=T)#
+		rates = matrix(nrow=length(locations), ncol=length(locations))#
+		BFs1 = matrix(nrow=length(locations), ncol=length(locations))#
+		BFs2 = matrix(nrow=length(locations), ncol=length(locations))#
+		row.names(rates) = locations; colnames(rates) = locations#
+		row.names(BFs1) = locations; colnames(BFs1) = locations#
+		row.names(BFs2) = locations; colnames(BFs2) = locations#
+		for (i in 1:length(locations))#
+			{#
+				for (j in 1:length(locations))#
+					{#
+						if (i != j)#
+							{#
+								colName = paste0("location.indicators.",locations[i],".",locations[j])#
+								index1 = which(colnames(log1)==colName); index2 = which(colnames(log2)==colName)#
+								p = sum(log1[,index1]==1)/dim(log1)[1]#
+								K = 20 # length(locations)*(length(locations)-1) # K shoulf be divided by 2 if "symetric" case#
+								q = (log(2)+K-1)/(K*(K-1))#
+								BFs1[i,j] = (p/(1-p))/(q/(1-q))#
+								p1 = sum(log1[,index1]==1)/dim(log1)[1]#
+								p2 = sum(log2[,index2]==1)/dim(log2)[1]#
+								BFs2[i,j] = (p1/(1-p1))/(p2/(1-p2))#
+								index3 = which(colnames(log1)==paste0("location.rates.",locations[i],".",locations[j]))#
+								rates[i,j] = median(log1[,index3]*log1[,index1])#
+							}#
+					}#
+			}#
+		MJs1 = MJs; MJs2 = MJs; rates[BFs2<3] = NA; MJs1[BFs1<3] = NA; MJs2[BFs2<3] = NA; BFs1 = round(BFs1, 1); BFs2 = round(BFs2, 1)#
+		write.table(BFs1, paste0("Replicate_",n,"_BFs_1.csv"), sep=",", quote=F)#
+		write.table(BFs2, paste0("Replicate_",n,"_BFs_2.csv"), sep=",", quote=F)#
+		write.table(rates, paste0("Replicate_",n,"_rates.csv"), sep=",", quote=F)#
+		write.table(MJs2, paste0("Replicate_",n,"_MJs_2.csv"), sep=",", quote=F)#
+	}
+n
+log1 = read.table(paste0("Replicate_",n,"_DTA_4.log"), header=T)
+log2 = read.table(paste0("Replicate_",n,"_wTS_4.log"), header=T)
+head(log1)
+locations = c("Bronx","Brooklyn","Manhattan","Queens","StatenIsland")#
+burnIns_DTA = c(1001,301,1041,301,301,241,301,1001,201,4401)#
+burnIns_wTS = c(2001,1501,1801,1301,261,1701,201,1301,801,2201)#
+for (n in 1:nberOfReplicates)#
+	{#
+		if (!file.exists(paste0("Replicate_",n,"_DTA_4.log")))#
+			{#
+				log = scan(paste0("Replicate_",n,"_DTA_1.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:5,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-5)/1000)#
+				log = log[c(1:5,seq(6,6+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_DTA_4.log"))#
+			}#
+		if (!file.exists(paste0("Replicate_",n,"_wTS_4.log")))#
+			{#
+				log = scan(paste0("Replicate_",n,"_wTS_1.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:5,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-5)/1000)#
+				log = log[c(1:5,seq(6,6+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_wTS_4.log"))#
+			}#
+		if (!file.exists(paste0("Replicate_",n,"_DTA_5.log")))#
+			{#
+				log = scan(paste0("Replicate_",n,"_DTA_3.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:4,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-4)/1000)#
+				log = log[c(1:4,seq(5,5+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_DTA_5.log"))#
+			}#
+		if (!file.exists(paste0("Replicate_",n,"_wTS_5.log")))#
+			{#
+				log = scan(paste0("Replicate_",n,"_wTS_3.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:4,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-4)/1000)#
+				log = log[c(1:4,seq(5,5+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_wTS_5.log"))#
+			}#
+	}
+for (n in 1:nberOfReplicates)#
+	{#
+		if (!file.exists(paste0("Replicate_",n,"_DTA_5.txt")))#
+			{#
+				system(paste0("perl Getting_Markov_jumps.pl 0 < Replicate_",n,"_DTA_5.log > Replicate_",n,"_DTA_5.txt"))#
+				txt = scan(paste0("Replicate_",n,"_DTA_5.txt"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				write(txt[c(1,3:length(txt))], paste0("Replicate_",n,"_DTA_5.txt"))#
+			}#
+		if (!file.exists(paste0("Replicate_",n,"_DTA_5.csv")))#
+			{#
+				tab = read.table(paste0("Replicate_",n,"_DTA_5.txt"), head=T)#
+				MJs = matrix(nrow=length(locations), ncol=length(locations))#
+				states = unique(tab[,"state"])#
+				for (i in 1:length(locations))#
+					{#
+						for (j in 1:length(locations))#
+							{#
+								sub = tab[which((tab[,"from"]==locations[i])&(tab[,"to"]==locations[j])),]#
+								MJs_post = c(); # print(c(i,j))#
+								for (k in 1:length(states))#
+									{#
+										MJ = which(sub[,"state"]==states[k])#
+										MJs_post = c(MJs_post, length(MJ))#
+									}#
+								MJs[i,j] = mean(MJs_post) # median ??#
+							}#
+					}#
+				row.names(MJs) = locations; colnames(MJs) = locations#
+				write.table(round(MJs,1), paste0("Replicate_",n,"_DTA_5.csv"), quote=F, sep=",")#
+			}	else		{#
+				MJs = read.csv(paste0("Replicate_",n,"_DTA_5.csv"), header=T)#
+			}#
+		log1 = read.table(paste0("Replicate_",n,"_DTA_4.log"), header=T)#
+		log2 = read.table(paste0("Replicate_",n,"_wTS_4.log"), header=T)#
+		rates = matrix(nrow=length(locations), ncol=length(locations))#
+		BFs1 = matrix(nrow=length(locations), ncol=length(locations))#
+		BFs2 = matrix(nrow=length(locations), ncol=length(locations))#
+		row.names(rates) = locations; colnames(rates) = locations#
+		row.names(BFs1) = locations; colnames(BFs1) = locations#
+		row.names(BFs2) = locations; colnames(BFs2) = locations#
+		for (i in 1:length(locations))#
+			{#
+				for (j in 1:length(locations))#
+					{#
+						if (i != j)#
+							{#
+								colName = paste0("location.indicators.",locations[i],".",locations[j])#
+								index1 = which(colnames(log1)==colName); index2 = which(colnames(log2)==colName)#
+								p = sum(log1[,index1]==1)/dim(log1)[1]#
+								K = 20 # length(locations)*(length(locations)-1) # K shoulf be divided by 2 if "symetric" case#
+								q = (log(2)+K-1)/(K*(K-1))#
+								BFs1[i,j] = (p/(1-p))/(q/(1-q))#
+								p1 = sum(log1[,index1]==1)/dim(log1)[1]#
+								p2 = sum(log2[,index2]==1)/dim(log2)[1]#
+								BFs2[i,j] = (p1/(1-p1))/(p2/(1-p2))#
+								index3 = which(colnames(log1)==paste0("location.rates.",locations[i],".",locations[j]))#
+								rates[i,j] = median(log1[,index3]*log1[,index1])#
+							}#
+					}#
+			}#
+		MJs1 = MJs; MJs2 = MJs; rates[BFs2<3] = NA; MJs1[BFs1<3] = NA; MJs2[BFs2<3] = NA; BFs1 = round(BFs1, 1); BFs2 = round(BFs2, 1)#
+		write.table(BFs1, paste0("Replicate_",n,"_BFs_1.csv"), sep=",", quote=F)#
+		write.table(BFs2, paste0("Replicate_",n,"_BFs_2.csv"), sep=",", quote=F)#
+		write.table(rates, paste0("Replicate_",n,"_rates.csv"), sep=",", quote=F)#
+		write.table(MJs2, paste0("Replicate_",n,"_MJs_2.csv"), sep=",", quote=F)#
+	}
+setwd(wd)
+NYboroughs = shapefile("NY_state_all_shapefiles/Boroughs_NYC.shp"); centroids = coordinates(NYboroughs)
+colName = paste0("location.indicators.",locations[i],".",locations[j])
+index1 = which(colnames(log1)==colName); index2 = which(colnames(log2)==colName)
+p = sum(log1[,index1]==1)/dim(log1)[1]
+p
+i=4
+j=1
+colName = paste0("location.indicators.",locations[i],".",locations[j])#
+								index1 = which(colnames(log1)==colName); index2 = which(colnames(log2)==colName)#
+								p = sum(log1[,index1]==1)/dim(log1)[1]
+p
+K = 20 # length(locations)*(length(locations)-1) # K shoulf be divided by 2 if "symetric" case
+K
+q = (log(2)+K-1)/(K*(K-1))
+q
+BFs1[i,j] = (p/(1-p))/(q/(1-q))
+BFs1[i,j]
+i=2
+j=1
+colName = paste0("location.indicators.",locations[i],".",locations[j])#
+								index1 = which(colnames(log1)==colName); index2 = which(colnames(log2)==colName)#
+								p = sum(log1[,index1]==1)/dim(log1)[1]#
+								K = 20 # length(locations)*(length(locations)-1) # K shoulf be divided by 2 if "symetric" case#
+								q = (log(2)+K-1)/(K*(K-1))
+(p/(1-p))/(q/(1-q))
+p1 = sum(log1[,index1]==1)/dim(log1)[1]
+p1
+p2 = sum(log2[,index2]==1)/dim(log2)[1]
+p2
+colName
+colnames(log2)
+getwd()
+nberOfReplicates = 10; wd = getwd()#
+setwd(paste0(wd,"/B_integrated_analyses/Replicate_DTA_analyses/"))#
+locations = c("Bronx","Brooklyn","Manhattan","Queens","StatenIsland")#
+burnIns_DTA = c(1001,301,1041,301,301,241,301,1001,201,4401)#
+burnIns_wTS = c(2001,1501,1801,1301,261,1701,201,1301,801,2201)#
+for (n in 1:nberOfReplicates)#
+	{#
+		if (!file.exists(paste0("Replicate_",n,"_DTA_4.log")))#
+			{#
+				log = scan(paste0("Replicate_",n,"_DTA_1.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:5,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-5)/1000)#
+				log = log[c(1:5,seq(6,6+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_DTA_4.log"))#
+			}#
+		if (!file.exists(paste0("Replicate_",n,"_wTS_4.log")))#
+			{#
+				log = scan(paste0("Replicate_",n,"_wTS_1.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:5,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-5)/1000)#
+				log = log[c(1:5,seq(6,6+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_wTS_4.log"))#
+			}#
+		if (!file.exists(paste0("Replicate_",n,"_DTA_5.log")))#
+			{#
+				log = scan(paste0("Replicate_",n,"_DTA_3.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:4,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-4)/1000)#
+				log = log[c(1:4,seq(5,5+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_DTA_5.log"))#
+			}#
+		if (!file.exists(paste0("Replicate_",n,"_wTS_5.log")))#
+			{#
+				log = scan(paste0("Replicate_",n,"_wTS_3.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				log = log[c(1:4,(burnIns_DTA[n]+1):length(log))]; interval = floor((length(log)-4)/1000)#
+				log = log[c(1:4,seq(5,5+(999*interval),interval))]; write(log, paste0("Replicate_",n,"_wTS_5.log"))#
+			}#
+	}
+for (n in 1:nberOfReplicates)#
+	{#
+		if (!file.exists(paste0("Replicate_",n,"_DTA_5.txt")))#
+			{#
+				system(paste0("perl Getting_Markov_jumps.pl 0 < Replicate_",n,"_DTA_5.log > Replicate_",n,"_DTA_5.txt"))#
+				txt = scan(paste0("Replicate_",n,"_DTA_5.txt"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				write(txt[c(1,3:length(txt))], paste0("Replicate_",n,"_DTA_5.txt"))#
+			}#
+		if (!file.exists(paste0("Replicate_",n,"_DTA_5.csv")))#
+			{#
+				tab = read.table(paste0("Replicate_",n,"_DTA_5.txt"), head=T)#
+				MJs = matrix(nrow=length(locations), ncol=length(locations))#
+				states = unique(tab[,"state"])#
+				for (i in 1:length(locations))#
+					{#
+						for (j in 1:length(locations))#
+							{#
+								sub = tab[which((tab[,"from"]==locations[i])&(tab[,"to"]==locations[j])),]#
+								MJs_post = c(); # print(c(i,j))#
+								for (k in 1:length(states))#
+									{#
+										MJ = which(sub[,"state"]==states[k])#
+										MJs_post = c(MJs_post, length(MJ))#
+									}#
+								MJs[i,j] = mean(MJs_post) # median ??#
+							}#
+					}#
+				row.names(MJs) = locations; colnames(MJs) = locations#
+				write.table(round(MJs,1), paste0("Replicate_",n,"_DTA_5.csv"), quote=F, sep=",")#
+			}	else		{#
+				MJs = read.csv(paste0("Replicate_",n,"_DTA_5.csv"), header=T)#
+			}#
+		log1 = read.table(paste0("Replicate_",n,"_DTA_4.log"), header=T)#
+		log2 = read.table(paste0("Replicate_",n,"_wTS_4.log"), header=T)#
+		rates = matrix(nrow=length(locations), ncol=length(locations))#
+		BFs1 = matrix(nrow=length(locations), ncol=length(locations))#
+		BFs2 = matrix(nrow=length(locations), ncol=length(locations))#
+		row.names(rates) = locations; colnames(rates) = locations#
+		row.names(BFs1) = locations; colnames(BFs1) = locations#
+		row.names(BFs2) = locations; colnames(BFs2) = locations#
+		for (i in 1:length(locations))#
+			{#
+				for (j in 1:length(locations))#
+					{#
+						if (i != j)#
+							{#
+								colName = paste0("location.indicators.",locations[i],".",locations[j])#
+								index1 = which(colnames(log1)==colName); index2 = which(colnames(log2)==colName)#
+								p = sum(log1[,index1]==1)/dim(log1)[1]#
+								K = 20 # length(locations)*(length(locations)-1) # K shoulf be divided by 2 if "symetric" case#
+								q = (log(2)+K-1)/(K*(K-1))#
+								BFs1[i,j] = (p/(1-p))/(q/(1-q))#
+								p1 = sum(log1[,index1]==1)/dim(log1)[1]#
+								p2 = sum(log2[,index2]==1)/dim(log2)[1]#
+								BFs2[i,j] = (p1/(1-p1))/(p2/(1-p2))#
+								index3 = which(colnames(log1)==paste0("location.rates.",locations[i],".",locations[j]))#
+								rates[i,j] = median(log1[,index3]*log1[,index1])#
+							}#
+					}#
+			}#
+		MJs1 = MJs; MJs2 = MJs; rates[BFs2<3] = NA; MJs1[BFs1<3] = NA; MJs2[BFs2<3] = NA; BFs1 = round(BFs1, 1); BFs2 = round(BFs2, 1)#
+		write.table(BFs1, paste0("Replicate_",n,"_BFs_1.csv"), sep=",", quote=F)#
+		write.table(BFs2, paste0("Replicate_",n,"_BFs_2.csv"), sep=",", quote=F)#
+		write.table(rates, paste0("Replicate_",n,"_rates.csv"), sep=",", quote=F)#
+		write.table(MJs2, paste0("Replicate_",n,"_MJs_2.csv"), sep=",", quote=F)#
+	}#
+setwd(wd)
+setwd(paste0(wd,"/B_integrated_analyses/Replicate_DTA_analyses/"))
+for (n in 1:nberOfReplicates)#
+	{#
+		if (!file.exists(paste0("Replicate_",n,"_DTA_5.txt")))#
+			{#
+				system(paste0("perl Getting_Markov_jumps.pl 0 < Replicate_",n,"_DTA_5.log > Replicate_",n,"_DTA_5.txt"))#
+				txt = scan(paste0("Replicate_",n,"_DTA_5.txt"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				write(txt[c(1,3:length(txt))], paste0("Replicate_",n,"_DTA_5.txt"))#
+			}#
+		if (!file.exists(paste0("Replicate_",n,"_DTA_5.csv")))#
+			{#
+				tab = read.table(paste0("Replicate_",n,"_DTA_5.txt"), head=T)#
+				MJs = matrix(nrow=length(locations), ncol=length(locations))#
+				states = unique(tab[,"state"])#
+				for (i in 1:length(locations))#
+					{#
+						for (j in 1:length(locations))#
+							{#
+								sub = tab[which((tab[,"from"]==locations[i])&(tab[,"to"]==locations[j])),]#
+								MJs_post = c(); # print(c(i,j))#
+								for (k in 1:length(states))#
+									{#
+										MJ = which(sub[,"state"]==states[k])#
+										MJs_post = c(MJs_post, length(MJ))#
+									}#
+								MJs[i,j] = mean(MJs_post) # median ??#
+							}#
+					}#
+				row.names(MJs) = locations; colnames(MJs) = locations#
+				write.table(round(MJs,1), paste0("Replicate_",n,"_DTA_5.csv"), quote=F, sep=",")#
+			}	else		{#
+				MJs = read.csv(paste0("Replicate_",n,"_DTA_5.csv"), header=T)#
+			}#
+		log1 = read.table(paste0("Replicate_",n,"_DTA_4.log"), header=T)#
+		log2 = read.table(paste0("Replicate_",n,"_wTS_4.log"), header=T)#
+		rates = matrix(nrow=length(locations), ncol=length(locations))#
+		BFs1 = matrix(nrow=length(locations), ncol=length(locations))#
+		BFs2 = matrix(nrow=length(locations), ncol=length(locations))#
+		row.names(rates) = locations; colnames(rates) = locations#
+		row.names(BFs1) = locations; colnames(BFs1) = locations#
+		row.names(BFs2) = locations; colnames(BFs2) = locations#
+		for (i in 1:length(locations))#
+			{#
+				for (j in 1:length(locations))#
+					{#
+						if (i != j)#
+							{#
+								colName = paste0("location.indicators.",locations[i],".",locations[j])#
+								index1 = which(colnames(log1)==colName); index2 = which(colnames(log2)==colName)#
+								p = sum(log1[,index1]==1)/dim(log1)[1]#
+								K = 20 # length(locations)*(length(locations)-1) # K shoulf be divided by 2 if "symetric" case#
+								q = (log(2)+K-1)/(K*(K-1))#
+								BFs1[i,j] = (p/(1-p))/(q/(1-q))#
+								p1 = sum(log1[,index1]==1)/dim(log1)[1]#
+								p2 = sum(log2[,index2]==1)/dim(log2)[1]#
+								BFs2[i,j] = (p1/(1-p1))/(p2/(1-p2))#
+								index3 = which(colnames(log1)==paste0("location.rates.",locations[i],".",locations[j]))#
+								rates[i,j] = median(log1[,index3]*log1[,index1])#
+							}#
+					}#
+			}#
+		MJs1 = MJs; MJs2 = MJs; rates[BFs2<3] = NA; MJs1[BFs1<3] = NA; MJs2[BFs2<3] = NA; BFs1 = round(BFs1, 1); BFs2 = round(BFs2, 1)#
+		write.table(BFs1, paste0("Replicate_",n,"_BFs_1.csv"), sep=",", quote=F)#
+		write.table(BFs2, paste0("Replicate_",n,"_BFs_2.csv"), sep=",", quote=F)#
+		write.table(rates, paste0("Replicate_",n,"_rates.csv"), sep=",", quote=F)#
+		write.table(MJs2, paste0("Replicate_",n,"_MJs_1.csv"), sep=",", quote=F)#
+		write.table(MJs2, paste0("Replicate_",n,"_MJs_2.csv"), sep=",", quote=F)#
+	}
+getwd()
+locations = c("Bronx","Brooklyn","Manhattan","Queens","StatenIsland")#
+burnIns_DTA = c(1001,301,1041,301,301,241,301,1001,201,4401)#
+burnIns_wTS = c(2001,1501,1801,1301,261,1701,201,1301,801,2201)
+n=1
+trees = scan(paste0("Replicate_",n,"_DTA_1.trees"), what="", sep="\n", quiet=T, blank.lines.skip=F)
+indices = grepl("tree_state", trees)
+indices
+trees1 = scan(paste0("Replicate_",n,"_DTA_1.trees"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				indices1 = which(!grepl("tree_state", trees1)); indices2 = which(grepl("tree_state", trees1))#
+				trees2 = c(trees1[c(indices1[1:(length(indices1)-1)],indices2[(burnIns_DTA[n]+1):length(indices2)])],"End;")#
+				write(trees2, paste0("Replicate_",n,"_1000.tree"))
+c(indices1[1:(length(indices1)-1)],indices2[(burnIns_DTA[n]+1):length(indices2)])
+indices1
+indices2
+1:(length(indices1)-1)
+indices1[1:(length(indices1)-1)]
+indices2[(burnIns_DTA[n]+1):length(indices2)]
+(burnIns_DTA[n]+1)
+length(indices2)
+indices2
+trees1 = scan(paste0("Replicate_",n,"_DTA_1.trees"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				indices1 = which(!grepl("tree_state", trees1)); indices2 = which(grepl("tree STATE_", trees1))#
+				indices2 = indices2[(burnIns_DTA[n]+1):length(indices2)]
+indices2
+trees1 = scan(paste0("Replicate_",n,"_DTA_1.trees"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				indices1 = which(!grepl("tree_state", trees1)); indices2 = which(grepl("tree STATE_", trees1))#
+				indices2 = indices2[(burnIns_DTA[n]+1):length(indices2)]; interval = floor(length(indices2)/1000)
+interval
+trees1 = scan(paste0("Replicate_",n,"_DTA_1.trees"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				indices1 = which(!grepl("tree_state", trees1)); indices2 = which(grepl("tree STATE_", trees1))#
+				indices2 = indices2[(burnIns_DTA[n]+1):length(indices2)]; interval = floor(length(indices2)/1000)#
+				indices2 = indices2[interval,999*interval,interval]#
+				trees2 = c(trees1[c(indices1[1:(length(indices1)-1)],indices2)],"End;")#
+				write(trees2, paste0("Replicate_",n,"_1000.trees"))
+indices1 = which(!grepl("tree_state", trees1)); indices2 = which(grepl("tree STATE_", trees1))#
+				indices2 = indices2[(burnIns_DTA[n]+1):length(indices2)]; interval = floor(length(indices2)/1000)#
+				indices2 = indices2[seq(interval,999*interval,interval)]
+indices2
+seq(interval,999*interval,interval)
+seq(interval,999*interval,interval)
+trees1 = scan(paste0("Replicate_",n,"_DTA_1.trees"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				indices1 = which(!grepl("tree_state", trees1)); indices2 = which(grepl("tree STATE_", trees1))#
+				indices2 = indices2[(burnIns_DTA[n]+1):length(indices2)]; interval = floor(length(indices2)/1000)#
+				indices2 = indices2[seq(interval,1000*interval,interval)]#
+				trees2 = c(trees1[c(indices1[1:(length(indices1)-1)],indices2)],"End;")#
+				write(trees2, paste0("Replicate_",n,"_1000.trees"))
+indices2
+indices2
+indices1[1:(length(indices1)-1)]
+trees1 = scan(paste0("Replicate_",n,"_DTA_1.trees"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				indices1 = which(!grepl("tree STATE_", trees1)); indices2 = which(grepl("tree STATE_", trees1))#
+				indices2 = indices2[(burnIns_DTA[n]+1):length(indices2)]; interval = floor(length(indices2)/1000)#
+				indices2 = indices2[seq(interval,1000*interval,interval)]#
+				trees2 = c(trees1[c(indices1[1:(length(indices1)-1)],indices2)],"End;")#
+				write(trees2, paste0("Replicate_",n,"_1000.trees"))
+locations = c("Bronx","Brooklyn","Manhattan","Queens","StatenIsland")#
+burnIns_DTA = c(1001,301,1041,301,301,241,301,1001,201,4401)#
+burnIns_wTS = c(2001,1501,1801,1301,261,1701,201,1301,801,2201)#
+for (n in 1:nberOfReplicates)#
+	{#
+		if (!file.exists(paste0("Replicate_",n,"_1000.trees")))#
+			{#
+				trees1 = scan(paste0("Replicate_",n,"_DTA_1.trees"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+				indices1 = which(!grepl("tree STATE_", trees1)); indices2 = which(grepl("tree STATE_", trees1))#
+				indices2 = indices2[(burnIns_DTA[n]+1):length(indices2)]; interval = floor(length(indices2)/1000)#
+				indices2 = indices2[seq(interval,1000*interval,interval)]#
+				trees2 = c(trees1[c(indices1[1:(length(indices1)-1)],indices2)],"End;")#
+				write(trees2, paste0("Replicate_",n,"_1000.trees"))#
+			}#
+	}
+n=1
+system(paste0("BEAST_1104_program/bin/treeannotator -burninTrees 0 -heights keep Replicate_",n,"_1000.trees Replicate_",n,"_MCC.tree"), ignore.stdout=F, ignore.stderr=F)
+for (n in 1:nberOfReplicates)#
+	{#
+		system(paste0("BEAST_1104_program/bin/treeannotator -burninTrees 0 -heights keep Replicate_",n,"_1000.trees Replicate_",n,"_MCC.tree"), ignore.stdout=F, ignore.stderr=F)#
+	}
+n=8
+system(paste0("BEAST_1104_program/bin/treeannotator -burninTrees 0 -heights keep Replicate_",n,"_1000.trees Replicate_",n,"_MCC.tree"), ignore.stdout=F, ignore.stderr=F)
+n=10
+system(paste0("BEAST_1104_program/bin/treeannotator -burninTrees 0 -heights keep Replicate_",n,"_1000.trees Replicate_",n,"_MCC.tree"), ignore.stdout=F, ignore.stderr=F)
+wd = getwd()
+setwd(paste0(wd,"/B_integrated_analyses/"))
+trees1 = scan(paste0("MajorClade_DTA_1.trees"), what="", sep="\n", quiet=T, blank.lines.skip=F)
+trees1 = scan(paste0("MajorClade_DTA_1.trees"), what="", sep="\n", quiet=T, blank.lines.skip=F)
+indices1 = which(!grepl("tree STATE_", trees1)); indices2 = which(grepl("tree STATE_", trees1))
+indices2 = indices2[(1261+1):length(indices2)]; interval = floor(length(indices2)/1000)
+indices2 = indices2[seq(interval,1000*interval,interval)]
+trees2 = c(trees1[c(indices1[1:(length(indices1)-1)],indices2)],"End;")
+write(trees2, paste0("MajorClade_1000.trees"))
+indices2
+trees1 = scan(paste0("MajorClade_DTA_1.trees"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+indices1 = which(!grepl("tree STATE_", trees1)); indices2 = which(grepl("tree STATE_", trees1))#
+indices2 = indices2[(1261+1):length(indices2)]; interval = floor(length(indices2)/1000)
+indices2
+trees1 = scan(paste0("MajorClade_DTA_1.trees"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+indices1 = which(!grepl("tree STATE_", trees1)); indices2 = which(grepl("tree STATE_", trees1))#
+interval = floor(length(indices2)/1000); indices2 = indices2[seq(interval,1000*interval,interval)]#
+trees2 = c(trees1[c(indices1[1:(length(indices1)-1)],indices2)],"End;")#
+write(trees2, paste0("MajorClade_1000.trees"))
+if (!file.exists(paste0("MajorClade_DTA_4.log")))#
+	{#
+		log = scan(paste0("MajorClade_DTA_1.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+		interval = floor((length(log)-5)/1000); log = log[c(1:5,seq(6,6+(999*interval),interval))]#
+		write(log, paste0("MajorClade_DTA_4.log"))#
+	}#
+if (!file.exists(paste0("MajorClade_wTS_4.log")))#
+	{#
+		log = scan(paste0("MajorClade_wTS_4.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+		interval = floor((length(log)-5)/1000); log = log[c(1:5,seq(6,6+(999*interval),interval))]#
+		write(log, paste0("MajorClade_wTS_4.log"))#
+	}#
+if (!file.exists(paste0("MajorClade_DTA_5.log")))#
+	{#
+		log = scan(paste0("MajorClade_DTA_3.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+		interval = floor((length(log)-4)/1000); log = log[c(1:4,seq(5,5+(999*interval),interval))]#
+		write(log, paste0("MajorClade_DTA_5.log"))#
+	}#
+if (!file.exists(paste0("MajorClade_wTS_5.log")))#
+	{#
+		log = scan(paste0("MajorClade_wTS_3.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+		interval = floor((length(log)-4)/1000); log = log[c(1:4,seq(5,5+(999*interval),interval))]#
+		write(log, paste0("MajorClade_wTS_5.log"))#
+	}
+log = scan(paste0("MajorClade_wTS_1.log"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+		interval = floor((length(log)-5)/1000); log = log[c(1:5,seq(6,6+(999*interval),interval))]#
+		write(log, paste0("MajorClade_wTS_4.log"))
+system(paste0("perl Getting_Markov_jumps.pl 0 < MajorClade_DTA_5.log > MajorClade_DTA_5.txt"))#
+		txt = scan(paste0("Replicate_",n,"_DTA_5.txt"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+		write(txt[c(1,3:length(txt))], paste0("MajorClade_DTA_5.txt"))
+system(paste0("perl Getting_Markov_jumps.pl 0 < MajorClade_DTA_5.log > MajorClade_DTA_5.txt"))#
+		txt = scan(paste0("Replicate_",n,"_DTA_5.txt"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+		write(txt[c(1,3:length(txt))], paste0("MajorClade_DTA_5.txt"))
+system(paste0("perl Getting_Markov_jumps.pl 0 < MajorClade_DTA_5.log > MajorClade_DTA_5.txt"))#
+		txt = scan(paste0("MajorClade_DTA_5.txt"), what="", sep="\n", quiet=T, blank.lines.skip=F)#
+		write(txt[c(1,3:length(txt))], paste0("MajorClade_DTA_5.txt"))
+tab = read.table(paste0("MajorClade_DTA_5.txt"), head=T)#
+		MJs = matrix(nrow=length(locations), ncol=length(locations))#
+		states = unique(tab[,"state"])#
+		for (i in 1:length(locations))#
+			{#
+				for (j in 1:length(locations))#
+					{#
+						sub = tab[which((tab[,"from"]==locations[i])&(tab[,"to"]==locations[j])),]#
+						MJs_post = c(); # print(c(i,j))#
+						for (k in 1:length(states))#
+							{#
+								MJ = which(sub[,"state"]==states[k])#
+								MJs_post = c(MJs_post, length(MJ))#
+							}#
+						MJs[i,j] = mean(MJs_post) # median ??#
+					}#
+			}#
+		row.names(MJs) = locations; colnames(MJs) = locations#
+		write.table(round(MJs,1), paste0("MajorClade_DTA_5.csv"), quote=F, sep=",")
+MJs = read.csv(paste0("Replicate_",n,"_DTA_5.csv"), header=T)
+MJs = read.csv(paste0("MajorClade_DTA_5.csv"), header=T)
+log1 = read.table(paste0("MajorClade_DTA_4.log"), header=T)#
+log2 = read.table(paste0("MajorClade_wTS_4.log"), header=T)#
+rates = matrix(nrow=length(locations), ncol=length(locations))#
+BFs1 = matrix(nrow=length(locations), ncol=length(locations))#
+BFs2 = matrix(nrow=length(locations), ncol=length(locations))#
+row.names(rates) = locations; colnames(rates) = locations#
+row.names(BFs1) = locations; colnames(BFs1) = locations#
+row.names(BFs2) = locations; colnames(BFs2) = locations
+for (i in 1:length(locations))#
+	{#
+		for (j in 1:length(locations))#
+			{#
+				if (i != j)#
+					{#
+						colName = paste0("location.indicators.",locations[i],".",locations[j])#
+						index1 = which(colnames(log1)==colName); index2 = which(colnames(log2)==colName)#
+						p = sum(log1[,index1]==1)/dim(log1)[1]#
+						K = 20 # length(locations)*(length(locations)-1) # K shoulf be divided by 2 if "symetric" case#
+						q = (log(2)+K-1)/(K*(K-1))#
+						BFs1[i,j] = (p/(1-p))/(q/(1-q))#
+						p1 = sum(log1[,index1]==1)/dim(log1)[1]#
+						p2 = sum(log2[,index2]==1)/dim(log2)[1]#
+						BFs2[i,j] = (p1/(1-p1))/(p2/(1-p2))#
+						index3 = which(colnames(log1)==paste0("location.rates.",locations[i],".",locations[j]))#
+						rates[i,j] = median(log1[,index3]*log1[,index1])#
+					}#
+			}#
+	}#
+MJs1 = MJs; MJs2 = MJs; rates[BFs2<3] = NA; MJs1[BFs1<3] = NA; MJs2[BFs2<3] = NA; BFs1 = round(BFs1, 1); BFs2 = round(BFs2, 1)
+write.table(BFs1, paste0("MajorClade_DTA_BFs_1.csv"), sep=",", quote=F)#
+write.table(BFs2, paste0("MajorClade_DTA_BFs_2.csv"), sep=",", quote=F)#
+write.table(rates, paste0("MajorClade_DTA_rates.csv"), sep=",", quote=F)#
+write.table(MJs2, paste0("MajorClade_DTA_MJs_1.csv"), sep=",", quote=F)#
+write.table(MJs2, paste0("MajorClade_DTA_MJs_2.csv"), sep=",", quote=F)
+write.table(BFs1, paste0("MajorClade_BFs_1.csv"), sep=",", quote=F)#
+write.table(BFs2, paste0("MajorClade_BFs_2.csv"), sep=",", quote=F)#
+write.table(rates, paste0("MajorClade_rates.csv"), sep=",", quote=F)#
+write.table(MJs2, paste0("MajorClade_MJs_1.csv"), sep=",", quote=F)#
+write.table(MJs2, paste0("MajorClade_MJs_2.csv"), sep=",", quote=F)
+colName = paste0("location.indicators.",locations[i],".",locations[j])
+index1 = which(colnames(log1)==colName); index2 = which(colnames(log2)==colName)
+p = sum(log1[,index1]==1)/dim(log1)[1]
+K = 20 # length(locations)*(length(locations)-1) # K shoulf be divided by 2 if "symetric" case
+q = (log(2)+K-1)/(K*(K-1))
+q
+BFs1[i,j] = (p/(1-p))/(q/(1-q))
+p1 = sum(log1[,index1]==1)/dim(log1)[1]
+p2 = sum(log2[,index2]==1)/dim(log2)[1]
+p2
+p1 = sum(log1[,index1]==1)/dim(log1)[1]
+p1
+(p1/(1-p1))/(p2/(1-p2))
+index1
+index2
+colnames(log1)
+colName
+i=1
+j=3
+colName = paste0("location.indicators.",locations[i],".",locations[j])
+index1 = which(colnames(log1)==colName); index2 = which(colnames(log2)==colName)
+index1
+index2
+p = sum(log1[,index1]==1)/dim(log1)[1]
+p
+K = 20 # length(locations)*(length(locations)-1) # K shoulf be divided by 2 if "symetric" case
+q = (log(2)+K-1)/(K*(K-1))
+q
+BFs1[i,j] = (p/(1-p))/(q/(1-q))
+BFs1[i,j]
+p1 = sum(log1[,index1]==1)/dim(log1)[1]
+p2 = sum(log2[,index2]==1)/dim(log2)[1]
+p2
+p1
+BFs2[i,j] = (p1/(1-p1))/(p2/(1-p2))
+(p1/(1-p1))/(p2/(1-p2))
+BFs2
+i=2
+colName = paste0("location.indicators.",locations[i],".",locations[j])#
+						index1 = which(colnames(log1)==colName); index2 = which(colnames(log2)==colName)#
+						p = sum(log1[,index1]==1)/dim(log1)[1]#
+						K = 20 # length(locations)*(length(locations)-1) # K shoulf be divided by 2 if "symetric" case#
+						q = (log(2)+K-1)/(K*(K-1))#
+						BFs1[i,j] = (p/(1-p))/(q/(1-q))#
+						p1 = sum(log1[,index1]==1)/dim(log1)[1]#
+						p2 = sum(log2[,index2]==1)/dim(log2)[1]
+p1
+p2
+p2
+p1
+(p1/(1-p1))/(p2/(1-p2))
+p1
+colName = paste0("location.indicators.",locations[i],".",locations[j])
+index1 = which(colnames(log1)==colName); index2 = which(colnames(log2)==colName)
+p = sum(log1[,index1]==1)/dim(log1)[1]
+p
+K = 20 # length(locations)*(length(locations)-1) # K shoulf be divided by 2 if "symetric" case
+q = (log(2)+K-1)/(K*(K-1))
+BFs1[i,j] = (p/(1-p))/(q/(1-q))
+BFs1[i,j]
+q
+p1 = sum(log1[,index1]==1)/dim(log1)[1]
+p1
+p2 = sum(log2[,index2]==1)/dim(log2)[1]
+p2
+log2[,index2]
+log2[,index2]==1

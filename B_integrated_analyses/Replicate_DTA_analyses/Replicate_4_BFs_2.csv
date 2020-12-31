@@ -1,0 +1,6 @@
+Bronx,Brooklyn,Manhattan,Queens,StatenIsland
+Bronx,NA,0.9,0.9,0.9,0.9
+Brooklyn,0.8,NA,1.2,0.7,2
+Manhattan,1.1,0.8,NA,0.9,1
+Queens,Inf,Inf,Inf,NA,0.4
+StatenIsland,1.1,0.8,0.9,1,NA
