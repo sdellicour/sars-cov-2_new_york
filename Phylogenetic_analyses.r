@@ -307,13 +307,13 @@ for (i in 1:length(clusters1))
 if (showingPlots)
 	{
 		collectionDates_filetered = collectionDates
-		dev.new(width=3.3, height=8); par(mfrow=c(2,1), oma=c(0,0,0,0), mar=c(2,2,1,1), lwd=0.2, col="gray30")
-		hist(clusterSizes, breaks=50, axes=F, ann=F, title=NULL, col="#66CD0099", border="gray30")
+		dev.new(width=3.3, height=5); par(mfrow=c(2,1), oma=c(0,0,0,0), mar=c(2,2,1,1), lwd=0.2, col="gray30")
+		hist(clusterSizes, breaks=700, axes=F, ann=F, title=NULL, col="#57068C99", border="gray30", xlim=c(0,25))
 		axis(side=2, lwd.tick=0.2, cex.axis=0.65, mgp=c(0,0.20,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30")
 		axis(side=1, lwd.tick=0.2, cex.axis=0.65, mgp=c(0,0.00,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30")
-		hist(collectionDates_filetered, breaks=65, axes=F, ann=F, title=NULL, col="#66CD0099", border="gray30")
-		axis(side=2, lwd.tick=0.2, cex.axis=0.65, mgp=c(0,0.20,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30")
-		axis(side=1, lwd.tick=0.2, cex.axis=0.65, mgp=c(0,0.00,0), lwd=0.2, tck=-0.015, col.tick="gray30", col.axis="gray30", col="gray30",
+		hist(collectionDates_filetered, breaks=50, axes=F, ann=F, title=NULL, col="#57068C99", border="gray30")
+		axis(side=2, lwd.tick=0.2, cex.axis=0.65, mgp=c(0,0.20,0), lwd=0.2, tck=-0.025, col.tick="gray30", col.axis="gray30", col="gray30")
+		axis(side=1, lwd.tick=0.2, cex.axis=0.65, mgp=c(0,0.00,0), lwd=0.2, tck=-0.025, col.tick="gray30", col.axis="gray30", col="gray30",
 			 at=decimal_date(ymd(c("2020-02-01","2020-03-01","2020-04-01","2020-05-01"))),
 			 labels=c("01-02-2020","01-03-2020","01-04-2020","01-05-2020"))
 	}
@@ -331,7 +331,7 @@ if (!file.exists(paste0(wd1,"/BSSVS_&_tips_swapping/","TreeTime_with1000.trees")
 		write(c(selectedTrees,"End;"), paste0(wd1,"/BSSVS_&_tips_swapping/","TreeTime_with1000.trees"))
 	}
 identifyingPhylogeneticClusters = FALSE
-if (identifyingPhylogeneticClusters = TRUE)
+if (identifyingPhylogeneticClusters == TRUE)
 	{
 		selectedLocations = c("NY","NY.Bronx","NY.Brooklyn","NY.Manhattan","NY.Queens","NY.StatenIsland")
 		tree = readAnnotatedNexus(paste0(wd1,"/BSSVS_&_tips_swapping/TreeTime_with1000.tree"))
@@ -1245,8 +1245,8 @@ for (i in 1:dim(major_clade)[1])
 		major_clade_sequences[i] = sequences[which(sequenceIDs==major_clade[i,"trait"])]
 		fasta2 = c(fasta2, paste0(">",major_clade[i,"trait"]), major_clade_sequences[i])
 	}
-write.table(major_clade, paste0(wd2,"/Major_clade_data.txt"), row.names=F, quote=F, sep="\t")
-write(fasta2, paste0(wd2,"/Major_clade_seqs.fasta"))
+if (writingFiles) write.table(major_clade, paste0(wd2,"/Major_clade_data.txt"), row.names=F, quote=F, sep="\t")
+if (writingFiles) write(fasta2, paste0(wd2,"/Major_clade_seqs.fasta"))
 
 tree = read.tree(paste0(wd1,"/",analysis,".tre"))
 subtree = drop.tip(tree, tree$tip.label[!tree$tip.label%in%major_clade[,"trait"]])
@@ -1399,6 +1399,144 @@ for (n in 1:nberOfReplicates)
 				sink(NULL)
 			}
 		phylogeographicRuns = paste0(wd2,"/Replicate_RRW_analyses"); xml = c()
+		write.tree(subtree, paste0(phylogeographicRuns,"/Replicate_",n,"_RRW.tre"))
+		if (!file.exists(paste0(phylogeographicRuns,"/Replicate_",n,"_RRW.xml")))
+			{
+				template = scan(paste0(wd2,"/Template_file_RRW.xml"), what="", sep="\n", quiet=T, blank.lines.skip=F)
+				template = gsub("TEMPLATE",paste0("Replicate_",n,"_RRW"), template)
+				tree_txt = scan(paste0(phylogeographicRuns,"/Replicate_",n,"_RRW.tre"), what="", sep="\n", quiet=T)
+				template = gsub("STARTING_TREE", tree_txt, template)
+				template = gsub("NODE_HEIGHT", node_height, template)
+				template = gsub("NODE_OFFSET", node_height-(7/365), template)
+				sink(file=paste0(phylogeographicRuns,"/Replicate_",n,"_RRW.xml"))
+				for (i in 1:length(template))
+					{
+						cat(template[i],"\n")
+						if (grepl("Insert taxa block",template[i]))
+							{
+								cat(paste0("\t<taxa id=\"taxa\">","\n"))
+								for (j in 1:dim(subsample1)[1])
+									{
+										cat(paste0("\t\t<taxon id=\"",subsample1[j,"trait"],"\">","\n"))
+										cat(paste0("\t\t\t<date value=\"",decimal_date(ymd(subsample1[j,"collection_date"])),"\" direction=\"forwards\" units=\"years\"/>","\n"))
+										cat("\t\t\t<attr name=\"latitude\">\n")
+										cat(paste0("\t\t\t\t",subsample1[j,"latitude"],"\n"))
+										cat("\t\t\t</attr>\n")
+										cat("\t\t\t<attr name=\"longitude\">\n")
+										cat(paste0("\t\t\t\t",subsample1[j,"longitude"],"\n"))
+										cat("\t\t\t</attr>\n")
+										cat("\t\t\t<attr name=\"location\">\n")
+										cat(paste0("\t\t\t\t",subsample1[j,"latitude"]," ",subsample1[j,"longitude"],"\n"))
+										cat("\t\t\t</attr>\n")
+										cat("\t\t</taxon>\n")
+									}
+								cat("\t</taxa>","\n")
+							}
+						if (grepl("Insert clade block",template[i]))
+							{
+								cat(paste0("\t<taxa id=\"major_clade\">","\n"))
+								for (j in 1:dim(subsample1)[1])
+									{
+										cat(paste0("\t\t<taxon idref=\"",subsample1[j,"trait"],"\"/>","\n"))
+									}
+								cat("\t</taxa>","\n")
+							}
+						if (grepl("Insert alignment block",template[i]))
+							{
+								cat(paste0("\t<alignment id=\"alignment\" dataType=\"nucleotide\">","\n"))
+								for (j in 1:dim(subsample1)[1])
+									{
+										cat("\t\t<sequence>\n")
+										cat(paste0("\t\t\t<taxon idref=\"",subsample1[j,"trait"],"\"/>","\n"))
+										cat(paste0("\t\t\t",subsample2[j],"\n"))
+										cat("\t\t</sequence>\n")
+									}
+								cat("\t</alignment>","\n")
+							}
+					}
+				sink(NULL)
+			}
+	}
+for (n in 1:nberOfReplicates)
+	{
+		selected_sequences = read.nexus(paste0(wd2,"/Replicate_RRW_analyses/Replicate_",n,"_MCC.tree"))$tip.label
+		indices = which((major_clade[,"trait"]%in%selected_sequences))
+		subsample1 = major_clade[as.vector(indices),]; subsample2 = sequences[as.vector(indices)]
+		samplingDates = decimal_date(ymd(subsample1[,"collection_date"]))
+		tree = read.tree(paste0(wd1,"/",analysis,".tre"))
+		subtree = drop.tip(tree, tree$tip.label[!tree$tip.label%in%subsample1[,"trait"]])
+		mostRecentSamplingYear = max(samplingDates, na.rm=T)
+		node_height = max(nodeHeights(subtree)); tMRCA = mostRecentSamplingYear-node_height
+		phylogeographicRuns = paste0(wd2,"/Replicate_RRW_analyses"); xml = c()
+		write.tree(subtree, paste0(phylogeographicRuns,"/Replicate_",n,"_RRW.tre"))
+		if (!file.exists(paste0(phylogeographicRuns,"/Replicate_",n,"_RRW.xml")))
+			{
+				template = scan(paste0(wd2,"/Template_file_RRW.xml"), what="", sep="\n", quiet=T, blank.lines.skip=F)
+				template = gsub("TEMPLATE",paste0("Replicate_",n,"_RRW"), template)
+				tree_txt = scan(paste0(phylogeographicRuns,"/Replicate_",n,"_RRW.tre"), what="", sep="\n", quiet=T)
+				template = gsub("STARTING_TREE", tree_txt, template)
+				template = gsub("NODE_HEIGHT", node_height, template)
+				template = gsub("NODE_OFFSET", node_height-(7/365), template)
+				sink(file=paste0(phylogeographicRuns,"/Replicate_",n,"_RRW.xml"))
+				for (i in 1:length(template))
+					{
+						cat(template[i],"\n")
+						if (grepl("Insert taxa block",template[i]))
+							{
+								cat(paste0("\t<taxa id=\"taxa\">","\n"))
+								for (j in 1:dim(subsample1)[1])
+									{
+										cat(paste0("\t\t<taxon id=\"",subsample1[j,"trait"],"\">","\n"))
+										cat(paste0("\t\t\t<date value=\"",decimal_date(ymd(subsample1[j,"collection_date"])),"\" direction=\"forwards\" units=\"years\"/>","\n"))
+										cat("\t\t\t<attr name=\"latitude\">\n")
+										cat(paste0("\t\t\t\t",subsample1[j,"latitude"],"\n"))
+										cat("\t\t\t</attr>\n")
+										cat("\t\t\t<attr name=\"longitude\">\n")
+										cat(paste0("\t\t\t\t",subsample1[j,"longitude"],"\n"))
+										cat("\t\t\t</attr>\n")
+										cat("\t\t\t<attr name=\"location\">\n")
+										cat(paste0("\t\t\t\t",subsample1[j,"latitude"]," ",subsample1[j,"longitude"],"\n"))
+										cat("\t\t\t</attr>\n")
+										cat("\t\t</taxon>\n")
+									}
+								cat("\t</taxa>","\n")
+							}
+						if (grepl("Insert clade block",template[i]))
+							{
+								cat(paste0("\t<taxa id=\"major_clade\">","\n"))
+								for (j in 1:dim(subsample1)[1])
+									{
+										cat(paste0("\t\t<taxon idref=\"",subsample1[j,"trait"],"\"/>","\n"))
+									}
+								cat("\t</taxa>","\n")
+							}
+						if (grepl("Insert alignment block",template[i]))
+							{
+								cat(paste0("\t<alignment id=\"alignment\" dataType=\"nucleotide\">","\n"))
+								for (j in 1:dim(subsample1)[1])
+									{
+										cat("\t\t<sequence>\n")
+										cat(paste0("\t\t\t<taxon idref=\"",subsample1[j,"trait"],"\"/>","\n"))
+										cat(paste0("\t\t\t",subsample2[j],"\n"))
+										cat("\t\t</sequence>\n")
+									}
+								cat("\t</alignment>","\n")
+							}
+					}
+				sink(NULL)
+			}
+	}
+for (n in 1:nberOfReplicates)
+	{
+		selected_sequences = read.nexus(paste0(wd2,"/Replicate_RRW_analyses/Replicate_",n,"_MCC.tree"))$tip.label
+		indices = which((major_clade[,"trait"]%in%selected_sequences)&(major_clade[,"location"]!="StatenIsland"))
+		subsample1 = major_clade[as.vector(indices),]; subsample2 = sequences[as.vector(indices)]
+		samplingDates = decimal_date(ymd(subsample1[,"collection_date"]))
+		tree = read.tree(paste0(wd1,"/",analysis,".tre"))
+		subtree = drop.tip(tree, tree$tip.label[!tree$tip.label%in%subsample1[,"trait"]])
+		mostRecentSamplingYear = max(samplingDates, na.rm=T)
+		node_height = max(nodeHeights(subtree)); tMRCA = mostRecentSamplingYear-node_height
+		phylogeographicRuns = paste0(wd2,"/Replicate_RRW_wo_S_I"); xml = c()
 		write.tree(subtree, paste0(phylogeographicRuns,"/Replicate_",n,"_RRW.tre"))
 		if (!file.exists(paste0(phylogeographicRuns,"/Replicate_",n,"_RRW.xml")))
 			{
@@ -1767,96 +1905,102 @@ setwd(wd)
 
 	# B5. Extracting spatio-temporal information embedded in MCC/posterior trees (RRW approach)
 
-source("MCC_tree_extraction.r")
+source("MCC_tree_extraction.r"); wd = getwd()
 metadata = read.table("B_integrated_analyses/Major_clade_data.txt", head=T)
-mostRecentSamplingDates = rep(NA, nberOfReplicates); wd = getwd()
-setwd(paste0(wd,"/B_integrated_analyses/Replicate_RRW_analyses/"))
-burnIns = rep(NA, nberOfReplicates)
-for (n in 1:nberOfReplicates)
+directories = c("Replicate_RRW_analyses","Replicate_RRW_wo_S_I","Replicate_DRW_analyses")
+for (h in 1:length(directories))
 	{
-		allTrees = scan(file=paste0("Replicate_",n,"_RRW.trees"), what="", sep="\n", quiet=T, blank.lines.skip=F)
-		burnIns[n] = round(sum(grepl("tree STATE_",allTrees))/10)+1
-	}
-for (n in 1:nberOfReplicates)
-	{
-		if (!file.exists(paste0("Replicate_",n,"_MCC.tree")))
+		setwd(paste0(wd,"/B_integrated_analyses/",directories[h],"/"))
+		mostRecentSamplingDates = rep(NA, nberOfReplicates)
+		burnIns = rep(NA, nberOfReplicates)
+		for (n in 1:nberOfReplicates)
 			{
-				system(paste0("BEAST_1104_program/bin/treeannotator -burninTrees ",burnIns[n]," -heights keep Replicate_",n,"_RRW.trees Replicate_",n,"_MCC.tree"), ignore.stdout=F, ignore.stderr=F)
-			}
-	}
-for (n in 1:nberOfReplicates)
-	{
-		if (!file.exists(paste0("Replicate_",n,"_MCC.csv")))
-			{
-				mcc_tre = readAnnotatedNexus(paste0("Replicate_",n,"_MCC.tree"))
-				indices = which(metadata[,"trait"]%in%mcc_tre$tip.label)
-				if (length(indices) != length(mcc_tre$tip.label))
-					{
-						print(n)
-					}	else	{
-						mostRecentSamplingDatum = max(decimal_date(ymd(metadata[indices,"collection_date"])))
-						mcc_tab = MCC_tree_extraction(mcc_tre, mostRecentSamplingDatum); mostRecentSamplingDates[n] = mostRecentSamplingDatum
-						write.csv(mcc_tab, paste0("Replicate_",n,"_MCC.csv"), row.names=F, quote=F)
-					}
-			}
-	}
-randomSampling = FALSE; nberOfTreesToSample = 1000; coordinateAttributeName = "location"; nberOfCores = 10
-for (n in 1:nberOfReplicates)
-	{
-		localTreesDirectory = paste0("Replicate_",n,"_RRW_ext")
-		if (!file.exists(paste0(localTreesDirectory,"/TreeExtractions_1.csv")))
-			{
-				burnIn = burnIns[n]; mostRecentSamplingDatum = mostRecentSamplingDates[n]
 				allTrees = scan(file=paste0("Replicate_",n,"_RRW.trees"), what="", sep="\n", quiet=T, blank.lines.skip=F)
-				treeExtractions(localTreesDirectory, allTrees, burnIn, randomSampling, nberOfTreesToSample, mostRecentSamplingDatum, coordinateAttributeName, nberOfCores)
+				burnIns[n] = round(sum(grepl("tree STATE_",allTrees))/10)+1
 			}
-	}
-for (n in 1:nberOfReplicates)
-	{
-		mcc_tab = read.csv(paste0("Replicate_",n,"_MCC.csv"), head=T)
-		if (!"tipLabel"%in%colnames(mcc_tab))
+		if (h == 2) { burnIns[3] = 10001; burnIns[9] = 6001 }
+		if (h == 3) { burnIns[8] = 9001; burnIns[9] = 5001 }
+		for (n in 1:nberOfReplicates)
 			{
-				tipLabels = matrix(nrow=dim(mcc_tab)[1], ncol=1); colnames(tipLabels) = "tipLabel"
-				for (j in 1:dim(mcc_tab)[1])
+				if (!file.exists(paste0("Replicate_",n,"_MCC.tree")))
 					{
-						if (!mcc_tab[j,"node2"]%in%mcc_tab[,"node1"])
-							{
-								index = which((round(metadata[,"longitude"],5)==round(mcc_tab[j,"endLon"],5))&(round(metadata[,"latitude"],5)==round(mcc_tab[j,"endLat"],5)))
-								if (length(index) != 1)
-									{
-										print(c(i,j))
-									}	else	{
-										tipLabels[j,1] = metadata[index,"trait"]
-									}
-							}	
+		system(paste0("BEAST_1104_program/bin/treeannotator -burninTrees ",burnIns[n]," -heights keep Replicate_",n,"_RRW.trees Replicate_",n,"_MCC.tree"), ignore.stdout=F, ignore.stderr=F)
 					}
-				mcc_tab = cbind(mcc_tab, tipLabels)
-				write.csv(mcc_tab, paste0("Replicate_",n,"_MCC.csv"), row.names=F, quote=F)
 			}
-	}
-for (n in 1:nberOfReplicates)
-	{
-		for (j in 1:nberOfTreesToSample)
+		for (n in 1:nberOfReplicates)
 			{
-				tab = read.csv(paste0("Replicate_",n,"_RRW_ext/TreeExtractions_",j,".csv"), head=T)
-				if (!"tipLabel"%in%colnames(tab))
+				if (!file.exists(paste0("Replicate_",n,"_MCC.csv")))
 					{
-						tipLabels = matrix(nrow=dim(tab)[1], ncol=1); colnames(tipLabels) = "tipLabel"
-						for (k in 1:dim(tab)[1])
+						mcc_tre = readAnnotatedNexus(paste0("Replicate_",n,"_MCC.tree"))
+						indices = which(metadata[,"trait"]%in%mcc_tre$tip.label)
+						if (length(indices) != length(mcc_tre$tip.label))
 							{
-								if (!tab[k,"node2"]%in%tab[,"node1"])
+								print(n)
+							}	else	{
+								mostRecentSamplingDatum = max(decimal_date(ymd(metadata[indices,"collection_date"])))
+								mcc_tab = MCC_tree_extraction(mcc_tre, mostRecentSamplingDatum); mostRecentSamplingDates[n] = mostRecentSamplingDatum
+								write.csv(mcc_tab, paste0("Replicate_",n,"_MCC.csv"), row.names=F, quote=F)
+							}
+					}
+			}
+		randomSampling = FALSE; nberOfTreesToSample = 1000; coordinateAttributeName = "location"; nberOfCores = 5
+		for (n in 1:nberOfReplicates)
+			{
+				localTreesDirectory = paste0("Replicate_",n,"_RRW_ext")
+				if (!file.exists(paste0(localTreesDirectory,"/TreeExtractions_1.csv")))
+					{
+						burnIn = burnIns[n]; mostRecentSamplingDatum = mostRecentSamplingDates[n]
+						allTrees = scan(file=paste0("Replicate_",n,"_RRW.trees"), what="", sep="\n", quiet=T, blank.lines.skip=F)
+						treeExtractions(localTreesDirectory, allTrees, burnIn, randomSampling, nberOfTreesToSample, mostRecentSamplingDatum, coordinateAttributeName, nberOfCores)
+					}
+			}
+		for (n in 1:nberOfReplicates)
+			{
+				mcc_tab = read.csv(paste0("Replicate_",n,"_MCC.csv"), head=T)
+				if (!"tipLabel"%in%colnames(mcc_tab))
+					{
+						tipLabels = matrix(nrow=dim(mcc_tab)[1], ncol=1); colnames(tipLabels) = "tipLabel"
+						for (j in 1:dim(mcc_tab)[1])
+							{
+								if (!mcc_tab[j,"node2"]%in%mcc_tab[,"node1"])
 									{
-										index = which((round(metadata[,"longitude"],5)==round(tab[k,"endLon"],5))&(round(metadata[,"latitude"],5)==round(tab[k,"endLat"],5)))
+										index = which((round(metadata[,"longitude"],5)==round(mcc_tab[j,"endLon"],5))&(round(metadata[,"latitude"],5)==round(mcc_tab[j,"endLat"],5)))
 										if (length(index) != 1)
 											{
-												print(c(i,j,k))
+												print(c(i,j))
 											}	else	{
-												tipLabels[k,1] = metadata[index,"trait"]
+												tipLabels[j,1] = metadata[index,"trait"]
 											}
 									}	
 							}
-						tab = cbind(tab, tipLabels)
-						write.csv(tab, paste0("Replicate_",n,"_RRW_ext/TreeExtractions_",j,".csv"), row.names=F, quote=F)
+						mcc_tab = cbind(mcc_tab, tipLabels)
+						write.csv(mcc_tab, paste0("Replicate_",n,"_MCC.csv"), row.names=F, quote=F)
+					}
+			}
+		for (n in 1:nberOfReplicates)
+			{
+				for (j in 1:nberOfTreesToSample)
+					{
+						tab = read.csv(paste0("Replicate_",n,"_RRW_ext/TreeExtractions_",j,".csv"), head=T)
+						if (!"tipLabel"%in%colnames(tab))
+							{
+								tipLabels = matrix(nrow=dim(tab)[1], ncol=1); colnames(tipLabels) = "tipLabel"
+								for (k in 1:dim(tab)[1])
+									{
+										if (!tab[k,"node2"]%in%tab[,"node1"])
+											{
+												index = which((round(metadata[,"longitude"],5)==round(tab[k,"endLon"],5))&(round(metadata[,"latitude"],5)==round(tab[k,"endLat"],5)))
+												if (length(index) != 1)
+													{
+														# print(c(i,j,k))
+													}	else	{
+														tipLabels[k,1] = metadata[index,"trait"]
+													}
+											}	
+									}
+								tab = cbind(tab, tipLabels)
+								write.csv(tab, paste0("Replicate_",n,"_RRW_ext/TreeExtractions_",j,".csv"), row.names=F, quote=F)
+							}
 					}
 			}
 	}
@@ -1864,92 +2008,96 @@ setwd(wd)
 
 	# B6. Generating dispersal history graphs (RRW approach, MCC trees and 80% HPD polygons)
 
-if (showingPlots)
+directories = c("Replicate_RRW_analyses","Replicate_RRW_wo_S_I","Replicate_DRW_analyses")
+for (h in 1:length(directories))
 	{
-		wd = getwd(); nberOfReplicates = 10; mccs = list(); polygons_list = list()
-		setwd(paste0(wd,"/B_integrated_analyses/Replicate_RRW_analyses/"))
-		for (n in 1:nberOfReplicates)
+		if (showingPlots)
 			{
-				mccs[[n]] = read.csv(paste0("Replicate_",n,"_MCC.csv"), head=T)
-				localTreesDirectory = paste0("Replicate_",n,"_RRW_ext"); startDatum = min(mccs[[n]][,"startYear"])
-				nberOfExtractionFiles = 1000; percentage = 80; prob = percentage/100; precision = 1/(365/7)
-				polygons_list[[n]] = suppressWarnings(spreadGraphic2(localTreesDirectory, nberOfExtractionFiles, prob, startDatum, precision))
-			}
-		minYear = min(mccs[[1]][,"startYear"]); maxYear = max(mccs[[1]][,"endYear"])
-		for (n in 2:nberOfReplicates)
-			{
-				if (minYear > min(mccs[[n]][,"startYear"])) minYear = min(mccs[[n]][,"startYear"])
-				if (maxYear < max(mccs[[n]][,"endYear"])) maxYear = max(mccs[[n]][,"endYear"])
-			}
-		colourScale = rev(colorRampPalette(brewer.pal(11,"PuOr"))(141)[16:116])
-		setwd(wd); onlyInternalNodesOfTipBranches = FALSE
-		if (onlyInternalNodesOfTipBranches != TRUE) pdf(paste0("Figure_F_NEW1.pdf"), width=11.0, height=4.5)
-		if (onlyInternalNodesOfTipBranches == TRUE) pdf(paste0("Figure_F_NEW2.pdf"), width=11.0, height=4.5)
-		par(mfrow=c(2,5), oma=c(0,0,0,0), mar=c(0,0,0,0), lwd=0.2, col="gray30"); cexNode = 0.7; LWD = 1.0; croppingPolygons = TRUE
-		for (n in 1:nberOfReplicates)
-			{
-				polygons = polygons_list[[n]]; mcc = mccs[[n]]; selectedBranches = 1:dim(mcc)[1]
-				startYears_indices = (((mcc[,"startYear"]-minYear)/(maxYear-minYear))*100)+1
-				endYears_indices = (((mcc[,"endYear"]-minYear)/(maxYear-minYear))*100)+1
-				startYears_colours = colourScale[startYears_indices]
-				endYears_colours = colourScale[endYears_indices]
-				polygons_colours = rep(NA, length(polygons_list[[]]))
-				for (i in 1:length(polygons))
+				wd = getwd(); nberOfReplicates = 10; mccs = list(); polygons_list = list()
+				setwd(paste0(wd,"/B_integrated_analyses/",directories[h],"/"))
+				for (n in 1:nberOfReplicates)
 					{
-						date = as.numeric(names(polygons[[i]])); polygon_index = round((((date-minYear)/(maxYear-minYear))*100)+1)
-						polygons_colours[i] = paste0(colourScale[polygon_index],"40")
+						mccs[[n]] = read.csv(paste0("Replicate_",n,"_MCC.csv"), head=T)
+						localTreesDirectory = paste0("Replicate_",n,"_RRW_ext"); startDatum = min(mccs[[n]][,"startYear"])
+						nberOfExtractionFiles = 1000; percentage = 80; prob = percentage/100; precision = 1/(365/7)
+						polygons_list[[n]] = suppressWarnings(spreadGraphic2(localTreesDirectory, nberOfExtractionFiles, prob, startDatum, precision))
 					}
-				plot(NYboroughs, col="gray90", border="white", lwd=0.5)
-				for (i in length(polygons):1)
+				minYear = min(mccs[[1]][,"startYear"]); maxYear = max(mccs[[1]][,"endYear"])
+				for (n in 2:nberOfReplicates)
 					{
-						for (j in 1:length(polygons[[i]]@polygons))
+						if (minYear > min(mccs[[n]][,"startYear"])) minYear = min(mccs[[n]][,"startYear"])
+						if (maxYear < max(mccs[[n]][,"endYear"])) maxYear = max(mccs[[n]][,"endYear"])
+					}
+				colourScale = rev(colorRampPalette(brewer.pal(11,"PuOr"))(141)[16:116])
+				setwd(wd); onlyInternalNodesOfTipBranches = FALSE
+				if (onlyInternalNodesOfTipBranches != TRUE) pdf(paste0("Figure_F",h,"_NEW1.pdf"), width=11.0, height=4.5)
+				if (onlyInternalNodesOfTipBranches == TRUE) pdf(paste0("Figure_F",h,"_NEW2.pdf"), width=11.0, height=4.5)
+				par(mfrow=c(2,5), oma=c(0,0,0,0), mar=c(0,0,0,0), lwd=0.2, col="gray30"); cexNode = 0.7; LWD = 1.0; croppingPolygons = TRUE
+				for (n in 1:nberOfReplicates)
+					{
+						polygons = polygons_list[[n]]; mcc = mccs[[n]]; selectedBranches = 1:dim(mcc)[1]
+						startYears_indices = (((mcc[,"startYear"]-minYear)/(maxYear-minYear))*100)+1
+						endYears_indices = (((mcc[,"endYear"]-minYear)/(maxYear-minYear))*100)+1
+						startYears_colours = colourScale[startYears_indices]
+						endYears_colours = colourScale[endYears_indices]
+						polygons_colours = rep(NA, length(polygons_list[[]]))
+						for (i in 1:length(polygons))
 							{
-								polygons[[i]]@polygons[[j]] = maptools::checkPolygonsHoles(polygons[[i]]@polygons[[j]])
+								date = as.numeric(names(polygons[[i]])); polygon_index = round((((date-minYear)/(maxYear-minYear))*100)+1)
+								polygons_colours[i] = paste0(colourScale[polygon_index],"40")
 							}
-						pol = polygons[[i]]
-						if (croppingPolygons == TRUE)
+						plot(NYboroughs, col="gray90", border="white", lwd=0.5)
+						for (i in length(polygons):1)
 							{
-								pol = crop(pol, NYboroughs)
+								for (j in 1:length(polygons[[i]]@polygons))
+									{
+										polygons[[i]]@polygons[[j]] = maptools::checkPolygonsHoles(polygons[[i]]@polygons[[j]])
+									}
+								pol = polygons[[i]]
+								if (croppingPolygons == TRUE)
+									{
+										pol = crop(pol, NYboroughs)
+									}
+								plot(pol, axes=F, col=polygons_colours[i], add=T, border=NA)
 							}
-						plot(pol, axes=F, col=polygons_colours[i], add=T, border=NA)
-					}
-				plot(NYboroughs, col=NA, border="white", lwd=0.5, add=T)
-				for (i in selectedBranches)
-					{
-						curvedarrow(cbind(mcc[i,"startLon"],mcc[i,"startLat"]), cbind(mcc[i,"endLon"],mcc[i,"endLat"]), arr.length=0,
-								    arr.width=0, lwd=0.1, lty=1, lcol="gray30", arr.col=NA, arr.pos=F, curve=0.1, dr=NA, endhead=F)
-					}
-				for (i in rev(selectedBranches))
-					{
-						if (onlyInternalNodesOfTipBranches != TRUE)
+						plot(NYboroughs, col=NA, border="white", lwd=0.5, add=T)
+						for (i in selectedBranches)
 							{
-								if (!mcc[i,"node1"]%in%mcc[selectedBranches,"node2"])
+								curvedarrow(cbind(mcc[i,"startLon"],mcc[i,"startLat"]), cbind(mcc[i,"endLon"],mcc[i,"endLat"]), arr.length=0,
+										    arr.width=0, lwd=0.1, lty=1, lcol="gray30", arr.col=NA, arr.pos=F, curve=0.1, dr=NA, endhead=F)
+							}
+						for (i in rev(selectedBranches))
+							{
+								if (onlyInternalNodesOfTipBranches != TRUE)
 									{
-										points(mcc[i,"startLon"], mcc[i,"startLat"], pch=16, col=startYears_colours[i], cex=cexNode)
-										points(mcc[i,"startLon"], mcc[i,"startLat"], pch=1, col="gray30", cex=cexNode, lwd=0.2)
-									}
-								points(mcc[i,"endLon"], mcc[i,"endLat"], pch=16, col=endYears_colours[i], cex=cexNode)
-								points(mcc[i,"endLon"], mcc[i,"endLat"], pch=1, col="gray30", cex=cexNode, lwd=0.2)
-							}	else	{
-								if (!mcc[i,"node2"]%in%mcc[selectedBranches,"node1"])
-									{
-										points(mcc[i,"startLon"], mcc[i,"startLat"], pch=16, col=startYears_colours[i], cex=cexNode)
-										points(mcc[i,"startLon"], mcc[i,"startLat"], pch=1, col="gray30", cex=cexNode, lwd=0.2)
-									}
-							}			
+										if (!mcc[i,"node1"]%in%mcc[selectedBranches,"node2"])
+											{
+												points(mcc[i,"startLon"], mcc[i,"startLat"], pch=16, col=startYears_colours[i], cex=cexNode)
+												points(mcc[i,"startLon"], mcc[i,"startLat"], pch=1, col="gray30", cex=cexNode, lwd=0.2)
+											}
+										points(mcc[i,"endLon"], mcc[i,"endLat"], pch=16, col=endYears_colours[i], cex=cexNode)
+										points(mcc[i,"endLon"], mcc[i,"endLat"], pch=1, col="gray30", cex=cexNode, lwd=0.2)
+									}	else	{
+										if (!mcc[i,"node2"]%in%mcc[selectedBranches,"node1"])
+											{
+												points(mcc[i,"startLon"], mcc[i,"startLat"], pch=16, col=startYears_colours[i], cex=cexNode)
+												points(mcc[i,"startLon"], mcc[i,"startLat"], pch=1, col="gray30", cex=cexNode, lwd=0.2)
+											}
+									}			
+							}
+						if (n == nberOfReplicates)
+							{
+								selectedDates = decimal_date(ymd(c("2020-03-01","2020-04-01","2020-05-01")))
+								selectedLabels = c("01-03","01-04","01-05")	
+								rast = raster(matrix(nrow=1, ncol=2)); rast[1] = min(mcc[,"startYear"]); rast[2] = max(mcc[,"endYear"])
+								plot(rast, legend.only=T, add=T, col=colourScale, legend.width=0.5, legend.shrink=0.3, smallplot=c(0.970,0.990,0.1,0.9),
+									 legend.args=list(text="", cex=0.7, line=0.3, col="gray30"), horizontal=F,
+						  			 axis.args=list(cex.axis=0.8, lwd=0, lwd.tick=0.2, tck=-0.8, col.axis="gray30", line=0, mgp=c(0,0.5,0),
+						   			 at=selectedDates, labels=selectedLabels))
+						     }
 					}
-				if (n == nberOfReplicates)
-					{
-						selectedDates = decimal_date(ymd(c("2020-03-01","2020-04-01","2020-05-01")))
-						selectedLabels = c("01-03","01-04","01-05")	
-						rast = raster(matrix(nrow=1, ncol=2)); rast[1] = min(mcc[,"startYear"]); rast[2] = max(mcc[,"endYear"])
-						plot(rast, legend.only=T, add=T, col=colourScale, legend.width=0.5, legend.shrink=0.3, smallplot=c(0.970,0.990,0.1,0.9),
-							 legend.args=list(text="", cex=0.7, line=0.3, col="gray30"), horizontal=F,
-				  			 axis.args=list(cex.axis=0.8, lwd=0, lwd.tick=0.2, tck=-0.8, col.axis="gray30", line=0, mgp=c(0,0.5,0),
-				   			 at=selectedDates, labels=selectedLabels))
-				     }
+				dev.off()
 			}
-		dev.off()
 	}
 
 	# B7. Analysing the lineage dispersal events among NY boroughs (DTA approach)
@@ -2041,252 +2189,256 @@ if (showingPlots)
 	# B8. Analysing the lineage dispersal events among NY boroughs (RRW approach)
 
 nberOfExtractionFiles = 1000
-if (!file.exists("B_integrated_analyses/Replicate_RRW_analyses/Pairwise_matrices_1.rds"))
+directories = c("Replicate_RRW_analyses","Replicate_RRW_wo_S_I","Replicate_DRW_analyses")
+for (h in 1:length(directories))
 	{
-		matrices_list1 = list() # considering all the branches
-		matrices_list2 = list() # only considering tip branches
+		if (!file.exists(paste0("B_integrated_analyses/",directories[h],"/Pairwise_matrices_1.rds")))
+			{
+				matrices_list1 = list() # considering all the branches
+				matrices_list2 = list() # only considering tip branches
+				for (n in 1:nberOfReplicates)
+					{
+						matrices1 = list(); matrices2 = list()
+						for (i in 1:nberOfExtractionFiles)
+							{
+								mat1 = matrix(0, nrow=dim(NYboroughs@data)[1], ncol=dim(NYboroughs@data)[1])
+								mat2 = matrix(0, nrow=dim(NYboroughs@data)[1], ncol=dim(NYboroughs@data)[1])
+								tab = read.csv(paste0("B_integrated_analyses/",directories[h],"/Replicate_",n,"_RRW_ext/TreeExtractions_",i,".csv"), head=T)
+								for (j in 1:dim(tab)[1])
+									{
+										polIndex1 = c(); polIndex2 = c()
+										for (k in 1:length(NYboroughs@polygons))
+											{
+												for (l in 1:length(NYboroughs@polygons[[k]]@Polygons))
+													{
+														pol = NYboroughs@polygons[[k]]@Polygons[[l]]
+														if (point.in.polygon(tab[j,"startLon"],tab[j,"startLat"],pol@coords[,1],pol@coords[,2]) == 1)
+															{
+																polIndex1 = c(polIndex1, k)
+															}
+														if (point.in.polygon(tab[j,"endLon"],tab[j,"endLat"],pol@coords[,1],pol@coords[,2]) == 1)
+															{
+																polIndex2 = c(polIndex2, k)
+															}
+													}
+											}
+										if ((length(polIndex1)==1)&(length(polIndex2)==1))
+											{
+												mat1[polIndex1,polIndex2] = mat1[polIndex1,polIndex2] + 1
+												if (!tab[j,"node2"]%in%tab[,"node1"])
+													{
+														mat2[polIndex1,polIndex2] = mat2[polIndex1,polIndex2] + 1
+													}
+											}
+									}
+								matrices1[[i]] = mat1; matrices2[[i]] = mat2
+							}
+						matrices_list1[[n]] = matrices1; matrices_list2[[n]] = matrices2
+					}
+				saveRDS(matrices_list1, paste0("B_integrated_analyses/",directories[h],"/Pairwise_matrices_1.rds"))
+				saveRDS(matrices_list2, paste0("B_integrated_analyses/",directories[h],"/Pairwise_matrices_2.rds"))
+			}	else		{
+				matrices_list1 = readRDS(paste0("B_integrated_analyses/",directories[h],"/Pairwise_matrices_1.rds"))
+				matrices_list2 = readRDS(paste0("B_integrated_analyses/",directories[h],"/Pairwise_matrices_2.rds"))
+			}
+		if (!file.exists(paste0("B_integrated_analyses/",directories[h],"/Borough_branches_1.rds")))
+			{
+				branches_list1 = list() # number of branches within clades connecting sequences sampled within a unique borough
+				branches_list2 = list() # number of tip branches connecting sequences sampled within a unique borough
+				for (n in 1:nberOfReplicates)
+					{
+						branches1 = list(); branches2 = list()
+						for (i in 1:nberOfExtractionFiles)
+							{
+								vals1 = rep(NA, dim(NYboroughs@data)[1]); vals2 = rep(NA, dim(NYboroughs@data)[1])
+								tab = read.csv(paste0("B_integrated_analyses/",directories[h],"/Replicate_",n,"_RRW_ext/TreeExtractions_",i,".csv"), head=T)
+								for (j in 1:length(NYboroughs@polygons))
+									{
+										branches = c()
+										for (k in 1:dim(tab)[1])
+											{
+												if (!tab[k,"node2"]%in%tab[,"node1"])
+													{
+														polIndex = c()
+														for (l in 1:length(NYboroughs@polygons[[j]]@Polygons))
+															{
+																pol = NYboroughs@polygons[[j]]@Polygons[[l]]
+																if (point.in.polygon(tab[k,"endLon"],tab[k,"endLat"],pol@coords[,1],pol@coords[,2]) == 1) polIndex = l
+															}
+														if (length(polIndex) == 1) branches = c(branches,k)
+													}
+											}
+										sub = tab[branches,]	
+										nodesToExplore = tab[which(tab[,"node2"]%in%sub[,"node1"]),"node2"]
+										buffer1 = nodesToExplore			
+										while (length(buffer1) != 0)
+											{
+												buffer1 = c(); buffer2 = c()
+												for (k in 1:length(nodesToExplore))
+													{
+														if (sum(sub[,"node1"]==nodesToExplore[k]) == 2)
+															{
+																sub = rbind(sub, tab[which(tab["node2"]==nodesToExplore[k]),])
+																buffer1 = c(buffer1, tab[which(tab["node2"]==nodesToExplore[k]),"node1"])
+															}	else		{
+																buffer2 = c(buffer2, nodesToExplore[k])
+															}	
+													}
+												nodesToExplore = c(buffer1, buffer2)
+											}
+										vals1[j] = dim(sub)[1]
+										sub = sub[which(!sub[,"node2"]%in%sub[,"node1"]),]; buffer = c()
+										for (k in 1:dim(sub)[1])
+											{
+												if (sum(sub[,"node1"]==sub[k,"node1"]) == 2) buffer = c(buffer, k)
+											}
+										vals2[j] = length(buffer)
+									}
+								branches1[[i]] = vals1; branches2[[i]] = vals2
+							}
+						branches_list1[[n]] = branches1; branches_list2[[n]] = branches2
+					}
+				saveRDS(branches_list1, paste0("B_integrated_analyses/",directories[h],"/Borough_branches_1.rds"))
+				saveRDS(branches_list2, paste0("B_integrated_analyses/",directories[h],"/Borough_branches_2.rds"))
+			}	else		{
+				branches_list1 = readRDS(paste0("B_integrated_analyses/",directories[h],"/Borough_branches_1.rds"))
+				branches_list2 = readRDS(paste0("B_integrated_analyses/",directories[h],"/Borough_branches_2.rds"))
+			}
+		matrices_mean1 = list(); branches_mean1 = list() # considering all the branches
+		matrices_mean2 = list(); branches_mean2 = list() # only considering tip branches
 		for (n in 1:nberOfReplicates)
 			{
-				matrices1 = list(); matrices2 = list()
+				mat1 = matrix(0, nrow=dim(NYboroughs@data)[1], ncol=dim(NYboroughs@data)[1])
+				mat2 = matrix(0, nrow=dim(NYboroughs@data)[1], ncol=dim(NYboroughs@data)[1])
 				for (i in 1:nberOfExtractionFiles)
 					{
-						mat1 = matrix(0, nrow=dim(NYboroughs@data)[1], ncol=dim(NYboroughs@data)[1])
-						mat2 = matrix(0, nrow=dim(NYboroughs@data)[1], ncol=dim(NYboroughs@data)[1])
-						tab = read.csv(paste0("B_integrated_analyses/Replicate_RRW_analyses/Replicate_",n,"_RRW_ext/TreeExtractions_",i,".csv"), head=T)
-						for (j in 1:dim(tab)[1])
-							{
-								polIndex1 = c(); polIndex2 = c()
-								for (k in 1:length(NYboroughs@polygons))
-									{
-										for (l in 1:length(NYboroughs@polygons[[k]]@Polygons))
-											{
-												pol = NYboroughs@polygons[[k]]@Polygons[[l]]
-												if (point.in.polygon(tab[j,"startLon"],tab[j,"startLat"],pol@coords[,1],pol@coords[,2]) == 1)
-													{
-														polIndex1 = c(polIndex1, k)
-													}
-												if (point.in.polygon(tab[j,"endLon"],tab[j,"endLat"],pol@coords[,1],pol@coords[,2]) == 1)
-													{
-														polIndex2 = c(polIndex2, k)
-													}
-											}
-									}
-								if ((length(polIndex1)==1)&(length(polIndex2)==1))
-									{
-										mat1[polIndex1,polIndex2] = mat1[polIndex1,polIndex2] + 1
-										if (!tab[j,"node2"]%in%tab[,"node1"])
-											{
-												mat2[polIndex1,polIndex2] = mat2[polIndex1,polIndex2] + 1
-											}
-									}
-							}
-						matrices1[[i]] = mat1; matrices2[[i]] = mat2
+						mat1 = mat1+matrices_list1[[n]][[i]]; mat2 = mat2+matrices_list2[[n]][[i]]
 					}
-				matrices_list1[[n]] = matrices1; matrices_list2[[n]] = matrices2
-			}
-		saveRDS(matrices_list1, "B_integrated_analyses/Replicate_RRW_analyses/Pairwise_matrices_1.rds")
-		saveRDS(matrices_list2, "B_integrated_analyses/Replicate_RRW_analyses/Pairwise_matrices_2.rds")
-	}	else		{
-		matrices_list1 = readRDS("B_integrated_analyses/Replicate_RRW_analyses/Pairwise_matrices_1.rds")
-		matrices_list2 = readRDS("B_integrated_analyses/Replicate_RRW_analyses/Pairwise_matrices_2.rds")
-	}
-if (!file.exists("B_integrated_analyses/Replicate_RRW_analyses/Borough_branches_1.rds"))
-	{
-		branches_list1 = list() # number of branches within clades connecting sequences sampled within a unique borough
-		branches_list2 = list() # number of tip branches connecting sequences sampled within a unique borough
-		for (n in 1:nberOfReplicates)
-			{
-				branches1 = list(); branches2 = list()
+				matrices_mean1[[n]] = mat1/nberOfExtractionFiles
+				matrices_mean2[[n]] = mat2/nberOfExtractionFiles
+				vec1 = rep(0, dim(NYboroughs@data)[1])
+				vec2 = rep(0, dim(NYboroughs@data)[1])
 				for (i in 1:nberOfExtractionFiles)
 					{
-						vals1 = rep(NA, dim(NYboroughs@data)[1]); vals2 = rep(NA, dim(NYboroughs@data)[1])
-						tab = read.csv(paste0("B_integrated_analyses/Replicate_RRW_analyses/Replicate_",n,"_RRW_ext/TreeExtractions_",i,".csv"), head=T)
-						for (j in 1:length(NYboroughs@polygons))
+						vec1 = vec1+branches_list1[[n]][[i]]; vec2 = vec2+branches_list2[[n]][[i]]
+					}
+				branches_mean1[[n]] = vec1/nberOfExtractionFiles
+				branches_mean2[[n]] = vec2/nberOfExtractionFiles
+			}
+		if (showingPlots)
+			{
+				centroids = coordinates(NYboroughs); plottingBoroughCladeBranches = FALSE
+				pdf(paste0("Figure_H",h,"_NEW1.pdf"), width=11.0, height=4.5) # dev.new(width=11.0, height=3.9)
+				par(mfrow=c(2,5), oma=c(0,0,0,0), mar=c(0,0,0,0), lwd=0.2, col="gray30")
+				minVals1 = min(diag(matrices_mean1[[1]])); maxVals1 = max(diag(matrices_mean1[[1]]))
+				mat = matrices_mean1[[1]]; diag(mat) = NA; minVals2 = min(mat, na.rm=T); maxVals2 = max(mat, na.rm=T)
+				vec = branches_mean1[[1]]; minVals3 = min(vec, na.rm=T); maxVals3 = max(vec, na.rm=T)
+				for (n in 2:nberOfReplicates)
+					{
+						mat1 = matrices_mean1[[n]]; mat2 = mat1
+						diag(mat2) = NA; mat3 = branches_mean1[[n]]
+						if (minVals1 > min(diag(mat1))) minVals1 = min(diag(mat1))
+						if (maxVals1 < max(diag(mat1))) maxVals1 = max(diag(mat1))
+						if (minVals2 > min(mat2,na.rm=T)) minVals2 = min(mat2,na.rm=T)
+						if (maxVals2 < max(mat2,na.rm=T)) maxVals2 = max(mat2,na.rm=T)
+						if (minVals3 > min(mat3,na.rm=T)) minVals3 = min(mat3,na.rm=T)
+						if (maxVals3 < max(mat3,na.rm=T)) maxVals3 = max(mat3,na.rm=T)
+					}
+				for (n in 1:nberOfReplicates)
+					{
+						mat = matrices_mean1[[n]]; vec = branches_mean1[[n]]
+						plot(NYboroughs, col=col_boroughs, border="gray60", lwd=0.5)
+						points(centroids, cex=10*((diag(mat)-minVals1)/(maxVals1-minVals1)), pch=16, col="#4D4D4D50")
+						if (plottingBoroughCladeBranches == TRUE)
 							{
-								branches = c()
-								for (k in 1:dim(tab)[1])
+								points(centroids, cex=10*((vec-minVals1)/(maxVals1-minVals1)), pch=1, col="#4D4D4D75", lwd=0.5, lty=2)
+							}
+						for (i in 1:dim(NYboroughs)[1])
+							{
+								for (j in 1:dim(NYboroughs)[1])
 									{
-										if (!tab[k,"node2"]%in%tab[,"node1"])
+										if ((i != j)&(mat[i,j]>=1))
 											{
-												polIndex = c()
-												for (l in 1:length(NYboroughs@polygons[[j]]@Polygons))
-													{
-														pol = NYboroughs@polygons[[j]]@Polygons[[l]]
-														if (point.in.polygon(tab[k,"endLon"],tab[k,"endLat"],pol@coords[,1],pol@coords[,2]) == 1) polIndex = l
-													}
-												if (length(polIndex) == 1) branches = c(branches,k)
+												LWD = (((mat[i,j]-minVals2)/(maxVals2-minVals2))*2)+0.1; arrow = (0.1*(mat[i,j]/maxVals2))+0.04
+												curvedarrow(centroids[i,], centroids[j,], arr.length=arrow*1.3, arr.width=arrow, lwd=LWD, lty=1,
+															lcol="gray30", arr.col="gray30", arr.pos=0.5, curve=0.15, dr=NA, endhead=F, arr.type="triangle")
 											}
 									}
-								sub = tab[branches,]	
-								nodesToExplore = tab[which(tab[,"node2"]%in%sub[,"node1"]),"node2"]
-								buffer1 = nodesToExplore			
-								while (length(buffer1) != 0)
+							}
+						if (n == 1)
+							{
+								vS = 5; LWD = (((vS-minVals2)/(maxVals2-minVals2))*2)+0.1; arrow = (0.1*(vS/maxVals2))+0.04
+								curvedarrow(cbind(-74.20,40.900), cbind(-74.12,40.900), arr.length=arrow*1.3, arr.width=arrow, lwd=LWD, lty=1, 
+											lcol="gray30", arr.col="gray30", arr.pos=0.52, curve=0, dr=NA, endhead=F, arr.type="triangle")
+								vS = 10; LWD = (((vS-minVals2)/(maxVals2-minVals2))*2)+0.1; arrow = (0.1*(vS/maxVals2))+0.04
+								curvedarrow(cbind(-74.20,40.875), cbind(-74.12,40.875), arr.length=arrow*1.3, arr.width=arrow, lwd=LWD, lty=1, 
+											lcol="gray30", arr.col="gray30", arr.pos=0.52, curve=0, dr=NA, endhead=F, arr.type="triangle")
+								vS = 20; LWD = (((vS-minVals2)/(maxVals2-minVals2))*2)+0.1; arrow = (0.1*(vS/maxVals2))+0.04
+								curvedarrow(cbind(-74.20,40.850), cbind(-74.12,40.850), arr.length=arrow*1.3, arr.width=arrow, lwd=LWD, lty=1, 
+											lcol="gray30", arr.col="gray30", arr.pos=0.52, curve=0, dr=NA, endhead=F, arr.type="triangle")
+								mtext("5", at=-74.11, line=-1.90, adj=0, col="gray30", cex=0.7)
+								mtext("10", at=-74.11, line=-2.80, adj=0, col="gray30", cex=0.7)
+								mtext("20", at=-74.11, line=-3.70, adj=0, col="gray30", cex=0.7)
+								points(cbind(rep(-74.15,4),rep(40.75,4)), cex=10*((seq(20,80,20)-minVals1)/(maxVals1-minVals1)), pch=1, col="#4D4D4D", lwd=0.3)
+							}
+					}		
+				dev.off()
+				pdf(paste0("Figure_H",h,"_NEW2.pdf"), width=11.0, height=4.5) # dev.new(width=11.0, height=4.5)
+				par(mfrow=c(2,5), oma=c(0,0,0,0), mar=c(0,0,0,0), lwd=0.2, col="gray30")
+				minVals1 = min(diag(matrices_mean2[[1]])); maxVals1 = max(diag(matrices_mean2[[1]]))
+				mat = matrices_mean2[[1]]; diag(mat) = NA; minVals2 = min(mat, na.rm=T); maxVals2 = max(mat, na.rm=T)
+				vec = branches_mean2[[1]]; minVals3 = min(vec, na.rm=T); maxVals3 = max(vec, na.rm=T)
+				for (n in 2:nberOfReplicates)
+					{
+						mat1 = matrices_mean2[[n]]; mat2 = mat1
+						diag(mat2) = NA; mat3 = branches_mean2[[n]]
+						if (minVals1 > min(diag(mat1))) minVals1 = min(diag(mat1))
+						if (maxVals1 < max(diag(mat1))) maxVals1 = max(diag(mat1))
+						if (minVals2 > min(mat2,na.rm=T)) minVals2 = min(mat2,na.rm=T)
+						if (maxVals2 < max(mat2,na.rm=T)) maxVals2 = max(mat2,na.rm=T)
+						if (minVals3 > min(mat3,na.rm=T)) minVals3 = min(mat3,na.rm=T)
+						if (maxVals3 < max(mat3,na.rm=T)) maxVals3 = max(mat3,na.rm=T)
+					}
+				for (n in 1:nberOfReplicates)
+					{
+						mat = matrices_mean2[[n]]; vec = branches_mean2[[n]]
+						plot(NYboroughs, col=col_boroughs, border="gray60", lwd=0.5)
+						points(centroids, cex=10*((diag(mat)-minVals1)/(maxVals1-minVals1)), pch=16, col="#4D4D4D50")
+						if (plottingBoroughCladeBranches == TRUE)
+							{
+								points(centroids, cex=10*((vec-minVals1)/(maxVals1-minVals1)), pch=1, col="#4D4D4D75", lwd=0.5, lty=2)
+							}
+						for (i in 1:dim(NYboroughs)[1])
+							{
+								for (j in 1:dim(NYboroughs)[1])
 									{
-										buffer1 = c(); buffer2 = c()
-										for (k in 1:length(nodesToExplore))
+										if ((i != j)&(mat[i,j]>=1))
 											{
-												if (sum(sub[,"node1"]==nodesToExplore[k]) == 2)
-													{
-														sub = rbind(sub, tab[which(tab["node2"]==nodesToExplore[k]),])
-														buffer1 = c(buffer1, tab[which(tab["node2"]==nodesToExplore[k]),"node1"])
-													}	else		{
-														buffer2 = c(buffer2, nodesToExplore[k])
-													}	
+												LWD = (((mat[i,j]-minVals2)/(maxVals2-minVals2))*2)+0.1; arrow = (0.1*(mat[i,j]/maxVals2))+0.04
+												curvedarrow(centroids[i,], centroids[j,], arr.length=arrow*1.3, arr.width=arrow, lwd=LWD, lty=1,
+															lcol="gray30", arr.col="gray30", arr.pos=0.5, curve=0.15, dr=NA, endhead=F, arr.type="triangle")
 											}
-										nodesToExplore = c(buffer1, buffer2)
 									}
-								vals1[j] = dim(sub)[1]
-								sub = sub[which(!sub[,"node2"]%in%sub[,"node1"]),]; buffer = c()
-								for (k in 1:dim(sub)[1])
-									{
-										if (sum(sub[,"node1"]==sub[k,"node1"]) == 2) buffer = c(buffer, k)
-									}
-								vals2[j] = length(buffer)
 							}
-						branches1[[i]] = vals1; branches2[[i]] = vals2
-					}
-				branches_list1[[n]] = branches1; branches_list2[[n]] = branches2
-			}
-		saveRDS(branches_list1, "B_integrated_analyses/Replicate_RRW_analyses/Borough_branches_1.rds")
-		saveRDS(branches_list2, "B_integrated_analyses/Replicate_RRW_analyses/Borough_branches_2.rds")
-	}	else		{
-		branches_list1 = readRDS("B_integrated_analyses/Replicate_RRW_analyses/Borough_branches_1.rds")
-		branches_list2 = readRDS("B_integrated_analyses/Replicate_RRW_analyses/Borough_branches_2.rds")
-	}
-matrices_mean1 = list(); branches_mean1 = list() # considering all the branches
-matrices_mean2 = list(); branches_mean2 = list() # only considering tip branches
-for (n in 1:nberOfReplicates)
-	{
-		mat1 = matrix(0, nrow=dim(NYboroughs@data)[1], ncol=dim(NYboroughs@data)[1])
-		mat2 = matrix(0, nrow=dim(NYboroughs@data)[1], ncol=dim(NYboroughs@data)[1])
-		for (i in 1:nberOfExtractionFiles)
-			{
-				mat1 = mat1+matrices_list1[[n]][[i]]; mat2 = mat2+matrices_list2[[n]][[i]]
-			}
-		matrices_mean1[[n]] = mat1/nberOfExtractionFiles
-		matrices_mean2[[n]] = mat2/nberOfExtractionFiles
-		vec1 = rep(0, dim(NYboroughs@data)[1])
-		vec2 = rep(0, dim(NYboroughs@data)[1])
-		for (i in 1:nberOfExtractionFiles)
-			{
-				vec1 = vec1+branches_list1[[n]][[i]]; vec2 = vec2+branches_list2[[n]][[i]]
-			}
-		branches_mean1[[n]] = vec1/nberOfExtractionFiles
-		branches_mean2[[n]] = vec2/nberOfExtractionFiles
-	}
-if (showingPlots)
-	{
-		centroids = coordinates(NYboroughs); plottingBoroughCladeBranches = FALSE
-		pdf(paste0("Figure_H_NEW1.pdf"), width=11.0, height=4.5) # dev.new(width=11.0, height=3.9)
-		par(mfrow=c(2,5), oma=c(0,0,0,0), mar=c(0,0,0,0), lwd=0.2, col="gray30")
-		minVals1 = min(diag(matrices_mean1[[1]])); maxVals1 = max(diag(matrices_mean1[[1]]))
-		mat = matrices_mean1[[1]]; diag(mat) = NA; minVals2 = min(mat, na.rm=T); maxVals2 = max(mat, na.rm=T)
-		vec = branches_mean1[[1]]; minVals3 = min(vec, na.rm=T); maxVals3 = max(vec, na.rm=T)
-		for (n in 2:nberOfReplicates)
-			{
-				mat1 = matrices_mean1[[n]]; mat2 = mat1
-				diag(mat2) = NA; mat3 = branches_mean1[[n]]
-				if (minVals1 > min(diag(mat1))) minVals1 = min(diag(mat1))
-				if (maxVals1 < max(diag(mat1))) maxVals1 = max(diag(mat1))
-				if (minVals2 > min(mat2,na.rm=T)) minVals2 = min(mat2,na.rm=T)
-				if (maxVals2 < max(mat2,na.rm=T)) maxVals2 = max(mat2,na.rm=T)
-				if (minVals3 > min(mat3,na.rm=T)) minVals3 = min(mat3,na.rm=T)
-				if (maxVals3 < max(mat3,na.rm=T)) maxVals3 = max(mat3,na.rm=T)
-			}
-		for (n in 1:nberOfReplicates)
-			{
-				mat = matrices_mean1[[n]]; vec = branches_mean1[[n]]
-				plot(NYboroughs, col=col_boroughs, border="gray60", lwd=0.5)
-				points(centroids, cex=10*((diag(mat)-minVals1)/(maxVals1-minVals1)), pch=16, col="#4D4D4D50")
-				if (plottingBoroughCladeBranches == TRUE)
-					{
-						points(centroids, cex=10*((vec-minVals1)/(maxVals1-minVals1)), pch=1, col="#4D4D4D75", lwd=0.5, lty=2)
-					}
-				for (i in 1:dim(NYboroughs)[1])
-					{
-						for (j in 1:dim(NYboroughs)[1])
+						if (n == 1)
 							{
-								if ((i != j)&(mat[i,j]>=1))
-									{
-										LWD = (((mat[i,j]-minVals2)/(maxVals2-minVals2))*2)+0.1; arrow = (0.1*(mat[i,j]/maxVals2))+0.04
-										curvedarrow(centroids[i,], centroids[j,], arr.length=arrow*1.3, arr.width=arrow, lwd=LWD, lty=1,
-													lcol="gray30", arr.col="gray30", arr.pos=0.5, curve=0.15, dr=NA, endhead=F, arr.type="triangle")
-									}
+								vS = 5; LWD = (((vS-minVals2)/(maxVals2-minVals2))*2)+0.1; arrow = (0.1*(vS/maxVals2))+0.04
+								curvedarrow(cbind(-74.20,40.900), cbind(-74.12,40.900), arr.length=arrow*1.3, arr.width=arrow, lwd=LWD, lty=1, 
+											lcol="gray30", arr.col="gray30", arr.pos=0.52, curve=0, dr=NA, endhead=F, arr.type="triangle")
+								vS = 10; LWD = (((vS-minVals2)/(maxVals2-minVals2))*2)+0.1; arrow = (0.1*(vS/maxVals2))+0.04
+								curvedarrow(cbind(-74.20,40.875), cbind(-74.12,40.875), arr.length=arrow*1.3, arr.width=arrow, lwd=LWD, lty=1, 
+											lcol="gray30", arr.col="gray30", arr.pos=0.52, curve=0, dr=NA, endhead=F, arr.type="triangle")
+								vS = 20; LWD = (((vS-minVals2)/(maxVals2-minVals2))*2)+0.1; arrow = (0.1*(vS/maxVals2))+0.04
+								curvedarrow(cbind(-74.20,40.850), cbind(-74.12,40.850), arr.length=arrow*1.3, arr.width=arrow, lwd=LWD, lty=1, 
+											lcol="gray30", arr.col="gray30", arr.pos=0.52, curve=0, dr=NA, endhead=F, arr.type="triangle")
+								mtext("5", at=-74.11, line=-1.90, adj=0, col="gray30", cex=0.7)
+								mtext("10", at=-74.11, line=-2.80, adj=0, col="gray30", cex=0.7)
+								mtext("20", at=-74.11, line=-3.70, adj=0, col="gray30", cex=0.7)
+								points(cbind(rep(-74.15,4),rep(40.75,4)), cex=10*((seq(5,20,5)-minVals1)/(maxVals1-minVals1)), pch=1, col="#4D4D4D", lwd=0.3)
 							}
 					}
-				if (n == 1)
-					{
-						vS = 5; LWD = (((vS-minVals2)/(maxVals2-minVals2))*2)+0.1; arrow = (0.1*(vS/maxVals2))+0.04
-						curvedarrow(cbind(-74.20,40.900), cbind(-74.12,40.900), arr.length=arrow*1.3, arr.width=arrow, lwd=LWD, lty=1, 
-									lcol="gray30", arr.col="gray30", arr.pos=0.52, curve=0, dr=NA, endhead=F, arr.type="triangle")
-						vS = 10; LWD = (((vS-minVals2)/(maxVals2-minVals2))*2)+0.1; arrow = (0.1*(vS/maxVals2))+0.04
-						curvedarrow(cbind(-74.20,40.875), cbind(-74.12,40.875), arr.length=arrow*1.3, arr.width=arrow, lwd=LWD, lty=1, 
-									lcol="gray30", arr.col="gray30", arr.pos=0.52, curve=0, dr=NA, endhead=F, arr.type="triangle")
-						vS = 20; LWD = (((vS-minVals2)/(maxVals2-minVals2))*2)+0.1; arrow = (0.1*(vS/maxVals2))+0.04
-						curvedarrow(cbind(-74.20,40.850), cbind(-74.12,40.850), arr.length=arrow*1.3, arr.width=arrow, lwd=LWD, lty=1, 
-									lcol="gray30", arr.col="gray30", arr.pos=0.52, curve=0, dr=NA, endhead=F, arr.type="triangle")
-						mtext("5", at=-74.11, line=-1.90, adj=0, col="gray30", cex=0.7)
-						mtext("10", at=-74.11, line=-2.80, adj=0, col="gray30", cex=0.7)
-						mtext("20", at=-74.11, line=-3.70, adj=0, col="gray30", cex=0.7)
-						points(cbind(rep(-74.15,4),rep(40.75,4)), cex=10*((seq(20,80,20)-minVals1)/(maxVals1-minVals1)), pch=1, col="#4D4D4D", lwd=0.3)
-					}
-			}		
-		dev.off()
-		pdf(paste0("Figure_H_NEW2.pdf"), width=11.0, height=4.5) # dev.new(width=11.0, height=4.5)
-		par(mfrow=c(2,5), oma=c(0,0,0,0), mar=c(0,0,0,0), lwd=0.2, col="gray30")
-		minVals1 = min(diag(matrices_mean2[[1]])); maxVals1 = max(diag(matrices_mean2[[1]]))
-		mat = matrices_mean2[[1]]; diag(mat) = NA; minVals2 = min(mat, na.rm=T); maxVals2 = max(mat, na.rm=T)
-		vec = branches_mean2[[1]]; minVals3 = min(vec, na.rm=T); maxVals3 = max(vec, na.rm=T)
-		for (n in 2:nberOfReplicates)
-			{
-				mat1 = matrices_mean2[[n]]; mat2 = mat1
-				diag(mat2) = NA; mat3 = branches_mean2[[n]]
-				if (minVals1 > min(diag(mat1))) minVals1 = min(diag(mat1))
-				if (maxVals1 < max(diag(mat1))) maxVals1 = max(diag(mat1))
-				if (minVals2 > min(mat2,na.rm=T)) minVals2 = min(mat2,na.rm=T)
-				if (maxVals2 < max(mat2,na.rm=T)) maxVals2 = max(mat2,na.rm=T)
-				if (minVals3 > min(mat3,na.rm=T)) minVals3 = min(mat3,na.rm=T)
-				if (maxVals3 < max(mat3,na.rm=T)) maxVals3 = max(mat3,na.rm=T)
+				dev.off()
 			}
-		for (n in 1:nberOfReplicates)
-			{
-				mat = matrices_mean2[[n]]; vec = branches_mean2[[n]]
-				plot(NYboroughs, col=col_boroughs, border="gray60", lwd=0.5)
-				points(centroids, cex=10*((diag(mat)-minVals1)/(maxVals1-minVals1)), pch=16, col="#4D4D4D50")
-				if (plottingBoroughCladeBranches == TRUE)
-					{
-						points(centroids, cex=10*((vec-minVals1)/(maxVals1-minVals1)), pch=1, col="#4D4D4D75", lwd=0.5, lty=2)
-					}
-				for (i in 1:dim(NYboroughs)[1])
-					{
-						for (j in 1:dim(NYboroughs)[1])
-							{
-								if ((i != j)&(mat[i,j]>=1))
-									{
-										LWD = (((mat[i,j]-minVals2)/(maxVals2-minVals2))*2)+0.1; arrow = (0.1*(mat[i,j]/maxVals2))+0.04
-										curvedarrow(centroids[i,], centroids[j,], arr.length=arrow*1.3, arr.width=arrow, lwd=LWD, lty=1,
-													lcol="gray30", arr.col="gray30", arr.pos=0.5, curve=0.15, dr=NA, endhead=F, arr.type="triangle")
-									}
-							}
-					}
-				if (n == 1)
-					{
-						vS = 5; LWD = (((vS-minVals2)/(maxVals2-minVals2))*2)+0.1; arrow = (0.1*(vS/maxVals2))+0.04
-						curvedarrow(cbind(-74.20,40.900), cbind(-74.12,40.900), arr.length=arrow*1.3, arr.width=arrow, lwd=LWD, lty=1, 
-									lcol="gray30", arr.col="gray30", arr.pos=0.52, curve=0, dr=NA, endhead=F, arr.type="triangle")
-						vS = 10; LWD = (((vS-minVals2)/(maxVals2-minVals2))*2)+0.1; arrow = (0.1*(vS/maxVals2))+0.04
-						curvedarrow(cbind(-74.20,40.875), cbind(-74.12,40.875), arr.length=arrow*1.3, arr.width=arrow, lwd=LWD, lty=1, 
-									lcol="gray30", arr.col="gray30", arr.pos=0.52, curve=0, dr=NA, endhead=F, arr.type="triangle")
-						vS = 20; LWD = (((vS-minVals2)/(maxVals2-minVals2))*2)+0.1; arrow = (0.1*(vS/maxVals2))+0.04
-						curvedarrow(cbind(-74.20,40.850), cbind(-74.12,40.850), arr.length=arrow*1.3, arr.width=arrow, lwd=LWD, lty=1, 
-									lcol="gray30", arr.col="gray30", arr.pos=0.52, curve=0, dr=NA, endhead=F, arr.type="triangle")
-						mtext("5", at=-74.11, line=-1.90, adj=0, col="gray30", cex=0.7)
-						mtext("10", at=-74.11, line=-2.80, adj=0, col="gray30", cex=0.7)
-						mtext("20", at=-74.11, line=-3.70, adj=0, col="gray30", cex=0.7)
-						points(cbind(rep(-74.15,4),rep(40.75,4)), cex=10*((seq(5,20,5)-minVals1)/(maxVals1-minVals1)), pch=1, col="#4D4D4D", lwd=0.3)
-					}
-			}
-		dev.off()
 	}
 
 	# B9. Visualising the spatio-temporal distribution of spike mutations
