@@ -2373,7 +2373,7 @@
 	 
  
 	<!-- Define MCMC                                                             --> 
-	<mcmc id="mcmc" chainLength="1000000000" autoOptimize="true" operatorAnalysis="Replicate_2_RRW.ops"> 
+	<mcmc id="mcmc" chainLength="5000000000" autoOptimize="true" operatorAnalysis="Replicate_2_RRW.ops"> 
 		<joint id="joint"> 
 			<prior id="prior"> 
 				<booleanLikelihood> 
